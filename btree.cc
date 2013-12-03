@@ -240,7 +240,9 @@ ERROR_T BTreeIndex::LookupOrUpdateInternal(const SIZE_T &node,
 	} else { 
 	  // BTREE_OP_UPDATE
 	  // WRITE ME
-	  return ERROR_UNIMPL;
+	  rc=b.SetVal(offset, value);
+	  if(rc) { return rc; }
+	  return b.Serialize(buffercache, node);
 	}
       }
     }
@@ -356,13 +358,76 @@ ERROR_T BTreeIndex::Lookup(const KEY_T &key, VALUE_T &value)
 ERROR_T BTreeIndex::Insert(const KEY_T &key, const VALUE_T &value)
 {
   // WRITE ME
-  return ERROR_UNIMPL;
+  BTreeNode b;
+  ERROR_T rc;
+  //first get root 
+  rc= b.Unserialize(buffercache,superblock.info.rootnode);
+  //root should now be in b
+  if (rc!=ERROR_NOERROR) { 
+    return rc;
+  }
+
+  //now check if root is full
+  //if full:
+  if(b.info.numkeys==b.info.GetNumSlotsAsInterior()){
+    //generate new root
+    SIZE_T newroot;
+    AllocateNode(newroot);
+    if (rc!=ERROR_NOERROR) { 
+      return rc;
+    }
+    BTreeNode newrootnode(BTREE_ROOT_NODE,
+        superblock.info.keysize,
+        superblock.info.valuesize,
+        buffercache->GetBlockSize());
+    newrootnode.info.numkeys=0;
+
+    //add old root as child
+
+    //write to disk
+    rc = newrootnode.Serialize(buffercache,newroot);
+    if (rc!=ERROR_NOERROR) { 
+      return rc;
+    }
+    //update superblock
+    superblock.info.rootnode = newroot;
+
+    //call split on old root
+    Split
+    
+    //insert
+    rc=InsertNotNull(newroot, key, value);
+    if (rc!=ERROR_NOERROR) { 
+      return rc;
+    }   
+  }
+
+  //if not full:
+  else{
+    return InsertNotNull(superblock_index, key, value);
+  }
 }
-  
-ERROR_T BTreeIndex::Update(const KEY_T &key, const VALUE_T &value)
+
+ERROR_T BTreeIndex::InsertNotNull(SIZE_T &node, const KEY_T &key, const VALUE_T &value)
 {
   // WRITE ME
   return ERROR_UNIMPL;
+}
+
+ERROR_T BTreeIndex::Split(const KEY_T &key, const VALUE_T &value)
+{
+  // WRITE ME
+  return ERROR_UNIMPL;
+}
+ 
+ERROR_T BTreeIndex::Update(const KEY_T &key, const VALUE_T &value)
+{
+  // WRITE ME
+  //NO IDEA IF THIS CONVERSION IS LEGIT
+  VALUE_T tempval = value;
+  return LookupOrUpdateInternal(superblock.info.rootnode, BTREE_OP_LOOKUP, key, tempval);
+
+  //return ERROR_UNIMPL;
 }
 
   
