@@ -360,72 +360,113 @@ ERROR_T BTreeIndex::Insert(const KEY_T &key, const VALUE_T &value)
   // WRITE ME
   BTreeNode b;
   ERROR_T rc;
-  //first get root 
-  rc= b.Unserialize(buffercache,superblock.info.rootnode);
-  //root should now be in b
-  if (rc!=ERROR_NOERROR) { 
-    return rc;
+  SIZE_T newnode;
+  KEY_T newkey;
+
+  //allocate the newnode holder
+  rc = AllocateNode(newnode);
+  if(rc!=ERROR_NOERROR){return rc;}
+
+  //begin recursive call
+  rc = InsertInternal(superblock.info.rootnode, key, value, newnode, newkey);
+  if(rc!=ERROR_NOERROR){return rc;}
+
+  //if newnode has something in it
+    //we need to add the key ptr pair newkey/newnode
+      //check if we need to split
+        //if yes, split, add, make new root
+        //else just add
+}
+
+ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T &value, SIZE_T &newnode, KEY_T &newkey)
+{
+  BTreeNode b;
+  BTreeNode child;
+  ERROR_T rc;
+  SIZE_T offset;
+  KEY_T testkey;
+  SIZE_T ptr;
+
+  //load node
+  rc= b.Unserialize(buffercache,node);
+  if (rc!=ERROR_NOERROR) { return rc;}
+
+  //figure out which child it should go to
+  //the desired child will be saved in ptr
+  // Scan through key/ptr pairs
+  for (offset=0;offset<b.info.numkeys;offset++) { 
+    rc=b.GetKey(offset,testkey);
+    if (rc) {  return rc; }
+    if (key<testkey) {
+      // OK, so we now have the first key that's larger
+      // so we need to recurse on the ptr immediately previous to 
+      // this one, if it exists
+      rc=b.GetPtr(offset,ptr);
+      if (rc) { return rc; }
+    }
+  }
+  // if we got here, we need to go to the next pointer, if it exists
+  if (b.info.numkeys>0) { 
+    rc=b.GetPtr(b.info.numkeys,ptr);
+    if (rc) { return rc; }
+  } 
+  else {
+    // There are no keys at all on this node, so nowhere to go
+    return ERROR_NONEXISTENT;
   }
 
-  //now check if root is full
-  //if full:
-  if(b.info.numkeys==b.info.GetNumSlotsAsInterior()){
-    //generate new root
-    SIZE_T newroot;
-    AllocateNode(newroot);
-    if (rc!=ERROR_NOERROR) { 
-      return rc;
-    }
-    BTreeNode newrootnode(BTREE_ROOT_NODE,
-        superblock.info.keysize,
-        superblock.info.valuesize,
-        buffercache->GetBlockSize());
-    newrootnode.info.numkeys=0;
+  //check what kind of node the child is
+  //load node
+  rc = child.Unserialize(buffercache,ptr);
+  if (rc!=ERROR_NOERROR) { return rc;}
 
-    //add old root as child
-
-    //write to disk
-    rc = newrootnode.Serialize(buffercache,newroot);
-    if (rc!=ERROR_NOERROR) { 
-      return rc;
-    }
-    //update superblock
-    superblock.info.rootnode = newroot;
-
-    //call split on old root
-    Split
-    
-    //insert
-    rc=InsertNotNull(newroot, key, value);
-    if (rc!=ERROR_NOERROR) { 
-      return rc;
-    }   
+  //if leaf
+  if(child.info.nodetype==BTREE_LEAF_NODE){
+    //if not full, insert
+    //if full, split, insert into proper child
   }
 
-  //if not full:
+  //else, it's internal
   else{
-    return InsertNotNull(superblock_index, key, value);
+    //recursive call
+    rc = InsertInternal(child, key, value, newnode, newkey);
+    if (rc!=ERROR_NOERROR) { return rc;}
+
+    //if newnode was added, update keys
+      //if the update makes it full now, split, rewrite newnode to be the newly added node from split
   }
 }
 
-ERROR_T BTreeIndex::InsertNotNull(SIZE_T &node, const KEY_T &key, const VALUE_T &value)
+//when newkey goes in, it contains key that you want to add
+//when newkey exits, it holds the key that will redirect to the two children that should be inserted in the parent
+ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, SIZE_T &newnode, KEY_T &newkey)
 {
   // WRITE ME
-  return ERROR_UNIMPL;
-}
+  BTreeNode old;
+  BTreeNode nnode;
+  ERROR_T rc;
+  SIZE_T offset;
+  KEY_T testkey;
+  SIZE_T ptr;
 
-ERROR_T BTreeIndex::Split(const KEY_T &key, const VALUE_T &value)
-{
-  // WRITE ME
-  return ERROR_UNIMPL;
+  //generate nnode, copy of the node we want to split
+  rc = old.Unserialize(buffercache, node_to_split);
+  if (rc!=ERROR_NOERROR) { return rc;}
+  nnode = old;
+
+  //move half to newnode
+  //wipe copied half from old
+
+  //write changes to disk
+  old.Serialize(buffercache, node_to_split);
+  if (rc!=ERROR_NOERROR) { return rc;}
+  return nnode.Serialize(buffercache, newnode);
 }
  
 ERROR_T BTreeIndex::Update(const KEY_T &key, const VALUE_T &value)
 {
   // WRITE ME
-  //NO IDEA IF THIS CONVERSION IS LEGIT
-  VALUE_T tempval = value;
-  return LookupOrUpdateInternal(superblock.info.rootnode, BTREE_OP_LOOKUP, key, tempval);
+  return LookupOrUpdateInternal(superblock.info.rootnode, BTREE_OP_LOOKUP, key, (VALUE_T&)value);
 
   //return ERROR_UNIMPL;
 }
