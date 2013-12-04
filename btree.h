@@ -106,7 +106,7 @@ public:
   // return ERROR_CONFLICT if the key already exists and it's a unique index
   ERROR_T Insert(const KEY_T &key, const VALUE_T &value);
   ERROR_T InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T &value);
-  ERROR_T Split(SIZE_T &newnode, KEY_T &newkey);
+  ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, const KEY_T &key, const VALUE_T &value, SIZE_T &newnode, KEY_T &newkey)
 
   // return zero on success
   // return ERROR_NONEXISTENT  if the key doesn't exist

@@ -437,25 +437,53 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
   }
 }
 
-//when newkey goes in, it contains key that you want to add
-//when newkey exits, it holds the key that will redirect to the two children that should be inserted in the parent
-ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, SIZE_T &newnode, KEY_T &newkey)
+
+ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, const KEY_T &key, const VALUE_T &value, SIZE_T &newnode, KEY_T &newkey)
 {
   // WRITE ME
   BTreeNode old;
   BTreeNode nnode;
   ERROR_T rc;
   SIZE_T offset;
-  KEY_T testkey;
+  KEY_T keyhold;
   SIZE_T ptr;
+  int counter;
+  bool inArray; //check if new key is in array yet
 
   //generate nnode, copy of the node we want to split
   rc = old.Unserialize(buffercache, node_to_split);
   if (rc!=ERROR_NOERROR) { return rc;}
   nnode = old;
 
-  //move half to newnode
-  //wipe copied half from old
+  //fill a sorted array with all the keys, including new keys
+  KEY_T keyarr[old.info.numkeys+1];
+  counter=0;
+  inArray=FALSE;
+  for (offset=0;offset<old.info.numkeys;offset++) { 
+    rc=old.GetKey(offset,keyhold);
+    if (rc) {  return rc; }
+    if (key<keyhold && inArray==FALSE) {
+      keyarr[counter]=key;
+      inArray=TRUE;
+      counter++
+    }
+    keyarr[counter]=keyhold;
+    counter++;
+  }
+
+  //two cases: leaf or not leaf
+  if(old.info.nodetype==BTREE_LEAF_NODE){
+
+
+    //leave at original node first (n+3)/2 pointers and (n+1)/2 keys
+    //remember in a leaf the link pointer is at offset 0
+    //actually, for the original node, this is pretty easy: just reset numkeys
+    old.info.numkeys = (old.info.numkeys+1)/2;
+  }
+  //else internal
+  else{
+
+  }
 
   //write changes to disk
   old.Serialize(buffercache, node_to_split);
