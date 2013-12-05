@@ -378,7 +378,7 @@ ERROR_T BTreeIndex::Insert(const KEY_T &key, const VALUE_T &value)
         //else just add
 }
 
-ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T &value, SIZE_T &newnode, KEY_T &newkey)
+ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T &value, SIZE_T &newnode, KEY_T &newkey, aDDNEWPOINTER)
 {
   BTreeNode b;
   BTreeNode child;
@@ -422,7 +422,7 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
 
   //if leaf
   if(child.info.nodetype==BTREE_LEAF_NODE){
-    
+
     //if not full, insert
     if(child.info.numkeys<child.info.GetNumSlotsAsLeaf()){
 
@@ -460,18 +460,17 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
 
       //increment number of keys
       child.info.numkeys++;
+      newnode=NULL;
+      newkey=NULL;
     }
-
-
-      
-      
-
-
 
     
     //if full, split, insert into proper child
     else{
-
+      //call split, split will insert
+      //set newnode and newkey to return
+      rc = Split(child, key, value, newnode, newkey);
+      if (rc) {  return rc; }
     }
   }
 
@@ -481,8 +480,22 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
     rc = InsertInternal(child, key, value, newnode, newkey);
     if (rc!=ERROR_NOERROR) { return rc;}
 
-    //if newnode was added, update keys
+    //if newnode was added, update keys in child
       //if the update makes it full now, split, rewrite newnode to be the newly added node from split
+
+    if(newnode!=NULL){
+      //check if full
+      //if not, just insert
+      if(child.info.)
+
+      //else, split
+      else{
+        key = newkey;
+
+        rc = Split(child, key, value, newnode, newkey);
+        if (rc) {  return rc; }
+      }
+    }
   }
 }
 
