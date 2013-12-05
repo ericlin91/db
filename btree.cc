@@ -235,15 +235,15 @@ ERROR_T BTreeIndex::LookupOrUpdateInternal(const SIZE_T &node,
       rc=b.GetKey(offset,testkey);
       if (rc) {  return rc; }
       if (testkey==key) { 
-	if (op==BTREE_OP_LOOKUP) { 
-	  return b.GetVal(offset,value);
-	} else { 
-	  // BTREE_OP_UPDATE
-	  // WRITE ME
-	  rc=b.SetVal(offset, value);
-	  if(rc) { return rc; }
-	  return b.Serialize(buffercache, node);
-	}
+      	if (op==BTREE_OP_LOOKUP) { 
+      	  return b.GetVal(offset,value);
+      	} else { 
+      	  // BTREE_OP_UPDATE
+      	  // WRITE ME
+      	  rc=b.SetVal(offset, value);
+      	  if(rc) { return rc; }
+      	  return b.Serialize(buffercache, node);
+      	}
       }
     }
     return ERROR_NONEXISTENT;
@@ -384,7 +384,7 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
   BTreeNode child;
   ERROR_T rc;
   SIZE_T offset;
-  KEY_T testkey;
+  KEY_T keyhold;
   SIZE_T ptr;
 
   //load node
@@ -422,8 +422,57 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
 
   //if leaf
   if(child.info.nodetype==BTREE_LEAF_NODE){
+    
     //if not full, insert
+    if(child.info.numkeys<child.info.GetNumSlotsAsLeaf()){
+
+      //get where to insert key
+      int insertAt; //save offset where key is inserted so you know where to put value
+      for (offset=0;offset<child.info.numkeys;offset++) { 
+        rc=child.GetKey(offset,keyhold);
+        if (rc) {  return rc; }
+        if (key<keyhold) {
+          insertAt=offset;
+          break;
+        }
+      }
+
+      //slide everything over
+      int i;
+      VALUE_T valhold;
+      for(i=child.info.numkeys-1; i>=insertAt; i--){
+        rc=child.GetKey(i,keyhold);
+        if (rc) {  return rc; }
+        rc=child.SetKey(i+1,keyhold);
+        if (rc) {  return rc; }
+        
+        rc=child.GetVal(i,valhold);
+        if (rc) {  return rc; }
+        rc=child.SetVal(i+1,valhold);
+        if (rc) {  return rc; }
+      }
+
+      //insert the new stuff
+      rc=child.SetKey(insertAt,key);
+      if (rc) {  return rc; }
+      rc=child.SetVal(insertAt,value);
+      if (rc) {  return rc; }
+
+      //increment number of keys
+      child.info.numkeys++;
+    }
+
+
+      
+      
+
+
+
+    
     //if full, split, insert into proper child
+    else{
+
+    }
   }
 
   //else, it's internal
@@ -457,6 +506,7 @@ ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, const KEY_T &key, const VALUE_T
 
   //fill a sorted array with all the keys, including new keys
   KEY_T keyarr[old.info.numkeys+1];
+  //VALUE_T valarr[old.info.numkeys+2];
   counter=0;
   inArray=FALSE;
   for (offset=0;offset<old.info.numkeys;offset++) { 
@@ -465,7 +515,7 @@ ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, const KEY_T &key, const VALUE_T
     if (key<keyhold && inArray==FALSE) {
       keyarr[counter]=key;
       inArray=TRUE;
-      counter++
+      counter++;
     }
     keyarr[counter]=keyhold;
     counter++;
@@ -475,10 +525,21 @@ ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, const KEY_T &key, const VALUE_T
   if(old.info.nodetype==BTREE_LEAF_NODE){
 
 
-    //leave at original node first (n+3)/2 pointers and (n+1)/2 keys
+    //leave at original node first (n+2)/2 keys and pointers
     //remember in a leaf the link pointer is at offset 0
-    //actually, for the original node, this is pretty easy: just reset numkeys
-    old.info.numkeys = (old.info.numkeys+1)/2;
+    counter=0;
+    for (offset=0;offset<(old.info.numkeys+2)/2;offset++) { 
+      rc=old.SetKey(offset,inArray[counter]);
+      if (rc) {  return rc; }
+      if (key<keyhold && inArray==FALSE) {
+        keyarr[counter]=key;
+        inArray=TRUE;
+        counter++;
+      }
+      keyarr[counter]=keyhold;
+      counter++;
+    }
+
   }
   //else internal
   else{
