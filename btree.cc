@@ -376,9 +376,84 @@ ERROR_T BTreeIndex::Insert(const KEY_T &key, const VALUE_T &value)
       //check if we need to split
         //if yes, split, add, make new root
         //else just add
+
+    if(newnode!=NULL){
+      //check if full
+      //if not, just insert
+      if(superblock.info.numkeys<child.info.GetNumSlotsAsInterior()){
+        //get where to insert key
+        int insertAt; //save offset where key is inserted so you know where to put value
+        for (offset=0;offset<child.info.numkeys;offset++) { 
+          rc=child.GetKey(offset,keyhold);
+          if (rc) {  return rc; }
+          if (newkey<keyhold) {
+            insertAt=offset;
+            break;
+          }
+        }
+
+        //slide everything over
+        int i;
+        SIZE_T ptrhold;
+        for(i=child.info.numkeys-1; i>=insertAt; i--){
+          rc=child.GetKey(i,keyhold);
+          if (rc) {  return rc; }
+          rc=child.SetKey(i+1,keyhold);
+          if (rc) {  return rc; }
+          
+          rc=child.GetPtr(i,ptrhold);
+          if (rc) {  return rc; }
+          rc=child.SetPtr(i+1,ptrhold);
+          if (rc) {  return rc; }
+        }
+
+        //insert the new stuff
+        rc=child.SetKey(insertAt,newkey);
+        if (rc) {  return rc; }
+        rc=child.SetPtr(insertAt,newnode);
+        if (rc) {  return rc; }
+
+        //increment number of keys
+        superblock.info.numkeys++;
+        newnode=NULL;
+        newkey=NULL;
+      }
+    
+      //else, split
+      else{
+        rc = Split(superblock.info,root, key, value, newnode, newkey);
+        if (rc) {  return rc; }
+
+        //make new root
+        SIZE_T newrootptr;
+        BTreeNode newroot;
+        BTreeNode root;
+        rc = root.Unserialize(buffercache, superblock.info.root);
+        if (rc) {  return rc; }
+        rc = AllocateNode(newrootptr);
+        if (rc) {  return rc; }
+        newroot = root;
+
+        //set key ptrs
+        newroot.SetKey(0, newkey);
+        newroot.SetPtr(0, superblock.info.root);
+        newroot.SetPtr(1, newnode);
+
+        //reset count
+        newroot.info.numkeys = 1;
+
+        //set superblock root
+        superblock.info.root = newrootptr;
+
+        //write to disk
+        newroot.Serialize(buffercache, newrootptr);
+
+      }
+    }
+  }
 }
 
-ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T &value, SIZE_T &newnode, KEY_T &newkey, aDDNEWPOINTER)
+ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T &value, SIZE_T &newnode, KEY_T &newkey)
 {
   BTreeNode b;
   BTreeNode child;
@@ -474,7 +549,7 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
     }
   }
 
-  //else, it's internal
+  //else, child is internal
   else{
     //recursive call
     rc = InsertInternal(child, key, value, newnode, newkey);
@@ -486,12 +561,47 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
     if(newnode!=NULL){
       //check if full
       //if not, just insert
-      if(child.info.)
+      if(child.info.numkeys<child.info.GetNumSlotsAsInterior()){
+        //get where to insert key
+        int insertAt; //save offset where key is inserted so you know where to put value
+        for (offset=0;offset<child.info.numkeys;offset++) { 
+          rc=child.GetKey(offset,keyhold);
+          if (rc) {  return rc; }
+          if (newkey<keyhold) {
+            insertAt=offset;
+            break;
+          }
+        }
 
+        //slide everything over
+        int i;
+        SIZE_T ptrhold;
+        for(i=child.info.numkeys-1; i>=insertAt; i--){
+          rc=child.GetKey(i,keyhold);
+          if (rc) {  return rc; }
+          rc=child.SetKey(i+1,keyhold);
+          if (rc) {  return rc; }
+          
+          rc=child.GetPtr(i,ptrhold);
+          if (rc) {  return rc; }
+          rc=child.SetPtr(i+1,ptrhold);
+          if (rc) {  return rc; }
+        }
+
+        //insert the new stuff
+        rc=child.SetKey(insertAt,newkey);
+        if (rc) {  return rc; }
+        rc=child.SetPtr(insertAt,newnode);
+        if (rc) {  return rc; }
+
+        //increment number of keys
+        child.info.numkeys++;
+        newnode=NULL;
+        newkey=NULL;
+      }
+      }
       //else, split
       else{
-        key = newkey;
-
         rc = Split(child, key, value, newnode, newkey);
         if (rc) {  return rc; }
       }
