@@ -522,10 +522,13 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
     child = b;
     child.info.numkeys=0;
     child.info.nodetype = BTREE_LEAF_NODE;
-    child.Serialize(buffercache, childptr);
+    rc = child.Serialize(buffercache, childptr);
+    if (rc) {  return rc; }
+
 
     child2 = child;
-    child2.Serialize(buffercache, childptr2);
+    rc = child2.Serialize(buffercache, childptr2);
+    if (rc) {  return rc; }
 
 
     b.info.numkeys=1;
@@ -574,15 +577,15 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
         child.info.numkeys++;
         int i;
         VALUE_T valhold;
-        for(i=child.info.numkeys; i>insertAt; i--){
-          rc=child.GetKey(i-1,keyhold);
+        for(i=child.info.numkeys; i>insertAt+1; i--){
+          rc=child.GetKey(i-2,keyhold);
           if (rc) {  return rc; }
-          rc=child.SetKey(i,keyhold);
+          rc=child.SetKey(i-1,keyhold);
           if (rc) {  return rc; }
           
-          rc=child.GetVal(i-1,valhold);
+          rc=child.GetVal(i-2,valhold);
           if (rc) {  return rc; }
-          rc=child.SetVal(i,valhold);
+          rc=child.SetVal(i-1,valhold);
           if (rc) {  return rc; }
         }
 
