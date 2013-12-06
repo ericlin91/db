@@ -623,67 +623,206 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
 ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, const KEY_T &key, const VALUE_T &value, SIZE_T &newnode, KEY_T &newkey)
 {
   // // WRITE ME
-  // BTreeNode old;
-  // BTreeNode nnode;
-  // ERROR_T rc;
-  // SIZE_T offset;
-  // KEY_T keyhold;
-  // SIZE_T ptr;
-  // int counter;
-  // bool inArray; //check if new key is in array yet
+  BTreeNode old;
+  BTreeNode nnode;
+  ERROR_T rc;
+  SIZE_T offset;
+  KEY_T keyhold;
+  VALUE_T valhold;
+  SIZE_T ptrhold;
+  SIZE_T ptr;
+  int counter;
+  int insertAt; //holds offset of insert
+  bool inArray; //check if new key is in array yet
+  KEY_T keyarr[old.info.numkeys+1];
+  VALUE_T valarr[old.info.numkeys+1];
+  SIZE_T ptrarr[old.info.numkeys+2];
+  //generate nnode, copy of the node we want to split
+  rc = old.Unserialize(buffercache, node_to_split);
+  if (rc!=ERROR_NOERROR) { return rc;}
+  nnode = old;
 
-  // //generate nnode, copy of the node we want to split
-  // rc = old.Unserialize(buffercache, node_to_split);
-  // if (rc!=ERROR_NOERROR) { return rc;}
-  // nnode = old;
-
-  // //fill a sorted array with all the keys, including new keys
-  // KEY_T keyarr[old.info.numkeys+1];
-  // //VALUE_T valarr[old.info.numkeys+2];
-  // counter=0;
-  // inArray=FALSE;
-  // for (offset=0;offset<old.info.numkeys;offset++) { 
-  //   rc=old.GetKey(offset,keyhold);
-  //   if (rc) {  return rc; }
-  //   if (key<keyhold && inArray==FALSE) {
-  //     keyarr[counter]=key;
-  //     inArray=TRUE;
-  //     counter++;
-  //   }
-  //   keyarr[counter]=keyhold;
-  //   counter++;
-  // }
+  
 
   // //two cases: leaf or not leaf
-  // if(old.info.nodetype==BTREE_LEAF_NODE){
+  if(old.info.nodetype==BTREE_LEAF_NODE){
+    int numkeys_old; //num keys to keep in old node
+    int numkeys_new; //num keys to put in new
+    int n = old.info.numkeys; //total number of keys before insertion
+
+    // numkeys_old = (n+3)/2; //(n+3) instead of (n/2) to account for rounding cuz we want ceiling
+    // numkeys_new = n+1-numkeys_old; //total after insertion minus the keys in oldnode
+
+    old.info.numkeys = (n+2)/2; //(n+3) instead of (n/2) to account for rounding cuz we want ceiling
+    nnode.info.numkeys = n+1-old.info.numkeys; //total after insertion minus the keys in oldnode
+
+    //fill a sorted array with all the keys, including new keys
+    counter=0;
+    inArray=FALSE;
+    for (offset=0;offset<old.info.numkeys;offset++) { 
+      rc=old.GetKey(offset,keyhold);
+      if (rc) {  return rc; }
+      if (key<keyhold && inArray==FALSE) {
+        keyarr[counter]=key;
+        valarr[counter]=value;
+        inArray=TRUE;
+        insertAt=counter;
+        counter++;
+      }
+      keyarr[counter]=keyhold;
+      old.GetVal(offset, valhold);
+      valarr[counter]=old.GetVal(offset, valhold);
+      counter++;
+    }
 
 
-  //   //leave at original node first (n+2)/2 keys and pointers
-  //   //remember in a leaf the link pointer is at offset 0
-  //   counter=0;
-  //   for (offset=0;offset<(old.info.numkeys+2)/2;offset++) { 
-  //     rc=old.SetKey(offset,inArray[counter]);
-  //     if (rc) {  return rc; }
-  //     if (key<keyhold && inArray==FALSE) {
-  //       keyarr[counter]=key;
-  //       inArray=TRUE;
-  //       counter++;
-  //     }
-  //     keyarr[counter]=keyhold;
-  //     counter++;
-  //   }
+    int i; //our for loop increment
 
-  // }
-  // //else internal
-  // else{
+    //fill old node
+    for(i=0; i<old.info.numkeys; i++){
+      old.SetKey(i, keyarr[i]);
+      old.SetVal(i, valarr[i]);
+    }
 
-  // }
+    //set newkey return value
+    newkey = keyarr[i];
 
-  // //write changes to disk
-  // old.Serialize(buffercache, node_to_split);
-  // if (rc!=ERROR_NOERROR) { return rc;}
-  // return nnode.Serialize(buffercache, newnode);
-  return ERROR_UNIMPL;
+    //fill new node
+    //note that i is not reset to 0
+    int j;
+    for(j=0; j<nnode.info.numkeys; j++){
+      old.SetKey(j, keyarr[i]);
+      old.SetVal(j, valarr[i]);
+      i++;
+    }
+        valarr[counter]=value;
+        inArray=TRUE;
+        insertAt=counter;
+        counter++;
+      }
+      keyarr[counter]=keyhold;
+      old.GetVal(offset, valhold);
+      valarr[counter]=old.GetVal(offset, valhold);
+      counter++;
+    }
+
+
+    int i; //our for loop increment
+
+    //fill old node
+    for(i=0; i<old.info.numkeys; i++){
+      old.SetKey(i, keyarr[i]);
+      old.SetVal(i, valarr[i]);
+    }
+
+    //set newkey return value
+    newkey = keyarr[i];
+
+    //fill new node
+    //note that i is not reset to 0
+    int j;
+    for(j=0; j<nnode.info.numkeys; j++){
+      old.SetKey(j, keyarr[i]);
+      old.SetVal(j, valarr[i]);
+      i++;
+    }
+  }
+
+  //else internal
+  else{
+    int n = old.info.numkeys; //total number of keys before insertion
+
+    old.info.numkeys = (n+1)/2; //(n+1) instead of (n) account for rounding cuz we want ceiling
+    nnode.info.numkeys = n-old.info.numkeys; //total minus the keys in oldnode
+
+    //fill a sorted array with all the keys, including new keys
+    counter=0;
+    inArray=FALSE;
+    for (offset=0;offset<old.info.numkeys;offset++) { 
+      rc=old.GetKey(offset,keyhold);
+      if (rc) {  return rc; }
+      if (key<keyhold && inArray==FALSE) {
+        keyarr[counter]=key;
+        inArray=TRUE;
+        insertAt=counter;
+        counter++;
+      }
+      keyarr[counter]=keyhold;
+      counter++;
+    }
+
+    //fill a sorted array with all the ptrs, including new ptr
+    counter=0;
+    inArray=FALSE;
+    for (offset=0;offset<old.info.numkeys+1;offset++) { 
+      rc=old.GetPtr(offset,ptrhold);
+      if (rc) {  return rc; }
+      if (key<keyhold && inArray==FALSE) {
+        keyarr[counter]=key;
+        inArray=TRUE;
+        insertAt=counter;
+        counter++;
+      }
+      keyarr[counter]=keyhold;
+      counter++;
+    }
+
+    int i; //our for loop increment
+
+    //fill old node
+    for(i=0; i<old.info.numkeys; i++){
+      old.SetKey(i, keyarr[i]);
+      old.SetVal(i, valarr[i]);
+    }
+
+    //set newkey return value
+    newkey = keyarr[i];
+
+    //fill new node
+    //note that i is not reset to 0
+    int j;
+    for(j=0; j<nnode.info.numkeys; j++){
+      old.SetKey(j, keyarr[i]);
+      old.SetVal(j, valarr[i]);
+      i++;
+    }
+        valarr[counter]=value;
+        inArray=TRUE;
+        insertAt=counter;
+        counter++;
+      }
+      keyarr[counter]=keyhold;
+      old.GetVal(offset, valhold);
+      valarr[counter]=old.GetVal(offset, valhold);
+      counter++;
+    }
+
+
+    int i; //our for loop increment
+
+    //fill old node
+    for(i=0; i<old.info.numkeys; i++){
+      old.SetKey(i, keyarr[i]);
+      old.SetVal(i, valarr[i]);
+    }
+
+    //set newkey return value
+    newkey = keyarr[i];
+
+    //fill new node
+    //note that i is not reset to 0
+    int j;
+    for(j=0; j<nnode.info.numkeys; j++){
+      old.SetKey(j, keyarr[i]);
+      old.SetVal(j, valarr[i]);
+      i++;
+    }
+  }
+
+  //write changes to disk
+  old.Serialize(buffercache, node_to_split);
+  if (rc!=ERROR_NOERROR) { return rc;}
+  return nnode.Serialize(buffercache, newnode);
 }
  
 ERROR_T BTreeIndex::Update(const KEY_T &key, const VALUE_T &value)
