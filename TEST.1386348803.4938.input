@@ -1,0 +1,5 @@
+INIT 100 0
+LOOKUP ub0txy4nicilrwk2fclesoear8503avrxhzotbeen88zr17fjpnu9ahvjae1y5fnaf88rewdrbkbpeogqsrsqbjrz5xrtblrf2iy  # should fail
+UPDATE 3hoe1ex1jfmjss8mta8crcv9mln36hjoejuxqmz82ouyi7ggpnlr7fm6x5k0u68f1bzetabgigmujahmg9an963884l5jpor6krh   # should fail
+LOOKUP dct5snk68cbrc0ctdrrwjz157wle8s7mciy11tj93c3rkeph7f892t758kbl9br83r8jotswt9q6bbay57lcu50vh1qfot17hoj3  # should fail
+DEINIT

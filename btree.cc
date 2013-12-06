@@ -448,6 +448,8 @@ ERROR_T BTreeIndex::Insert(const KEY_T &key, const VALUE_T &value)
       //reset count
       newroot.info.numkeys = 1;
 
+      newroot.info.nodetype=BTREE_ROOT_NODE;
+
       //set superblock root
       superblock.info.rootnode = newrootptr;
 
@@ -456,8 +458,7 @@ ERROR_T BTreeIndex::Insert(const KEY_T &key, const VALUE_T &value)
 
     }
   }
-  //shouldn't make it here
-  return ERROR_INSANE;
+  return ERROR_NOERROR;
 }
 
 
@@ -469,6 +470,7 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
   SIZE_T offset;
   KEY_T keyhold;
   SIZE_T childptr;
+  int found; //if insert location has been found
 
   //load node
   rc= b.Unserialize(buffercache,node);
@@ -495,7 +497,21 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
   } 
   else {
     // There are no keys at all on this node, so nowhere to go
-    return ERROR_NONEXISTENT;
+    //should only get here if root on initialization
+    //make a child 
+    rc = AllocateNode(childptr);
+    if (rc) {  return rc; }
+
+
+    child = b;
+    child.info.nodetype = BTREE_LEAF_NODE;
+    child.Serialize(buffercache, childptr);
+
+    b.info.numkeys++;
+    b.SetKey(0, key);
+    b.SetPtr(0, childptr);
+    b.Serialize(buffercache, node);
+    //return ERROR_NONEXISTENT;
   }
 
   //check what kind of node the child is
@@ -504,6 +520,7 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
   if (rc!=ERROR_NOERROR) { return rc;}
 
   //if leaf
+  //cout << child.info.nodetype;
   if(child.info.nodetype==BTREE_LEAF_NODE){
 
     //if not full, insert
@@ -511,28 +528,56 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
 
       //get where to insert key
       int insertAt; //save offset where key is inserted so you know where to put value
-      for (offset=0;offset<child.info.numkeys;offset++) { 
-        rc=child.GetKey(offset,keyhold);
-        if (rc) {  return rc; }
-        if (key<keyhold) {
-          insertAt=offset;
-          break;
-        }
+      
+      if(child.info.numkeys==0){
+        insertAt=0;
+        child.info.numkeys++;
       }
+      else{
+        found = 0;
+        for (offset=0;offset<child.info.numkeys;offset++) { 
+          rc=child.GetKey(offset,keyhold);
+          if (rc) {  return rc; }
+          if (key<keyhold) {
+            insertAt=offset;
+            found = 1;
+            break;
+          }
+        }
+        if(found==0){
+          insertAt = child.info.numkeys;
+        }     
 
-      //slide everything over
-      int i;
-      VALUE_T valhold;
-      for(i=child.info.numkeys-1; i>=insertAt; i--){
-        rc=child.GetKey(i,keyhold);
-        if (rc) {  return rc; }
-        rc=child.SetKey(i+1,keyhold);
-        if (rc) {  return rc; }
-        
-        rc=child.GetVal(i,valhold);
-        if (rc) {  return rc; }
-        rc=child.SetVal(i+1,valhold);
-        if (rc) {  return rc; }
+        //slide everything over
+        child.info.numkeys++;
+        int i;
+        VALUE_T valhold;
+        for(i=child.info.numkeys; i>insertAt; i--){
+          rc=child.GetKey(i-1,keyhold);
+          if (rc) {  return rc; }
+          rc=child.SetKey(i,keyhold);
+          if (rc) {  return rc; }
+          
+          rc=child.GetVal(i-1,valhold);
+          if (rc) {  return rc; }
+          rc=child.SetVal(i,valhold);
+          if (rc) {  return rc; }
+        }
+
+        // //slide everything over
+        // int i;
+        // VALUE_T valhold;
+        // for(i=child.info.numkeys-1; i>=insertAt; i--){
+        //   rc=child.GetKey(i,keyhold);
+        //   if (rc) {  return rc; }
+        //   rc=child.SetKey(i+1,keyhold);
+        //   if (rc) {  return rc; }
+          
+        //   rc=child.GetVal(i,valhold);
+        //   if (rc) {  return rc; }
+        //   rc=child.SetVal(i+1,valhold);
+        //   if (rc) {  return rc; }
+        // }
       }
 
       //insert the new stuff
@@ -542,7 +587,7 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
       if (rc) {  return rc; }
 
       //increment number of keys
-      child.info.numkeys++;
+      //child.info.numkeys++;
       newnode=0;
 
       return child.Serialize(buffercache,childptr);
@@ -615,8 +660,7 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
       }
     }
   }
-  //shouldn't make it here
-  return ERROR_INSANE;
+  return ERROR_NOERROR;
 }
 
 
@@ -702,6 +746,10 @@ ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, const KEY_T &key, const VALUE_T
 
   //else internal
   else{
+    if(old.info.nodetype==BTREE_ROOT_NODE){
+      old.info.nodetype=BTREE_INTERIOR_NODE;
+      nnode.info.nodetype=BTREE_INTERIOR_NODE;
+    }
     int n = old.info.numkeys; //total number of keys before insertion
 
     old.info.numkeys = (n+1)/2; //(n+1) instead of (n) account for rounding cuz we want ceiling
