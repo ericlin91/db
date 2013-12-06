@@ -211,12 +211,12 @@ ERROR_T BTreeIndex::LookupOrUpdateInternal(const SIZE_T &node,
       rc=b.GetKey(offset,testkey);
       if (rc) {  return rc; }
       if (key<testkey || key==testkey) {
-	// OK, so we now have the first key that's larger
-	// so we ned to recurse on the ptr immediately previous to 
-	// this one, if it exists
-	rc=b.GetPtr(offset,ptr);
-	if (rc) { return rc; }
-	return LookupOrUpdateInternal(ptr,op,key,value);
+      	// OK, so we now have the first key that's larger
+      	// so we ned to recurse on the ptr immediately previous to 
+      	// this one, if it exists
+      	rc=b.GetPtr(offset,ptr);
+      	if (rc) { return rc; }
+      	return LookupOrUpdateInternal(ptr,op,key,value);
       }
     }
     // if we got here, we need to go to the next pointer, if it exists
@@ -487,7 +487,7 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
   //figure out which child it should go to
   //the desired child will be saved in childptr
   // Scan through key/ptr pairs
-  childfound=0;
+  //childfound=0;
   for (offset=0;offset<b.info.numkeys;offset++) { 
     rc=b.GetKey(offset,keyhold);
     if (rc) {  return rc; }
@@ -497,12 +497,12 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
       // this one, if it exists
       rc=b.GetPtr(offset,childptr);
       if (rc) { return rc; }
-      childfound=1;
+      //childfound=1;
       break;
     }
   }
   // if we got here, we need to go to the next pointer, if it exists
-  if (b.info.numkeys>0 && childfound==0) { 
+  if (b.info.numkeys>0) { 
     rc=b.GetPtr(b.info.numkeys,childptr);
     if (rc) { return rc; }
   } 
@@ -525,7 +525,7 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
     child2.Serialize(buffercache, childptr2);
 
 
-    b.info.numkeys++;
+    b.info.numkeys=1;
     b.SetKey(0, key);
     b.SetPtr(0, childptr);
     b.SetPtr(1, childptr2);
@@ -847,7 +847,7 @@ ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, const KEY_T &key, const VALUE_T
 ERROR_T BTreeIndex::Update(const KEY_T &key, const VALUE_T &value)
 {
   // WRITE ME
-  return LookupOrUpdateInternal(superblock.info.rootnode, BTREE_OP_LOOKUP, key, (VALUE_T&)value);
+  return LookupOrUpdateInternal(superblock.info.rootnode, BTREE_OP_UPDATE, key, (VALUE_T&)value);
 
   //return ERROR_UNIMPL;
 }
