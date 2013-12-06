@@ -366,6 +366,11 @@ ERROR_T BTreeIndex::Insert(const KEY_T &key, const VALUE_T &value)
   KEY_T keyhold;
   BTreeNode root;
         
+  rc =  Lookup(key, (VALUE_T&)value);
+  if(rc!=ERROR_NONEXISTENT){
+    return ERROR_CONFLICT;
+  }
+
   //load root
   rc = root.Unserialize(buffercache, superblock.info.rootnode);
   if (rc) {  return rc; }
@@ -466,11 +471,14 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
 {
   BTreeNode b;
   BTreeNode child;
+  BTreeNode child2;
   ERROR_T rc;
   SIZE_T offset;
   KEY_T keyhold;
   SIZE_T childptr;
+  SIZE_T childptr2;
   int found; //if insert location has been found
+  int childfound;
 
   //load node
   rc= b.Unserialize(buffercache,node);
@@ -479,6 +487,7 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
   //figure out which child it should go to
   //the desired child will be saved in childptr
   // Scan through key/ptr pairs
+  childfound=0;
   for (offset=0;offset<b.info.numkeys;offset++) { 
     rc=b.GetKey(offset,keyhold);
     if (rc) {  return rc; }
@@ -488,28 +497,38 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
       // this one, if it exists
       rc=b.GetPtr(offset,childptr);
       if (rc) { return rc; }
+      childfound=1;
+      break;
     }
   }
   // if we got here, we need to go to the next pointer, if it exists
-  if (b.info.numkeys>0) { 
+  if (b.info.numkeys>0 && childfound==0) { 
     rc=b.GetPtr(b.info.numkeys,childptr);
     if (rc) { return rc; }
   } 
   else {
     // There are no keys at all on this node, so nowhere to go
     //should only get here if root on initialization
-    //make a child 
+    //make TWO children 
     rc = AllocateNode(childptr);
+    if (rc) {  return rc; }
+    rc = AllocateNode(childptr2);
     if (rc) {  return rc; }
 
 
     child = b;
+    child.info.numkeys=0;
     child.info.nodetype = BTREE_LEAF_NODE;
     child.Serialize(buffercache, childptr);
+
+    child2 = child;
+    child2.Serialize(buffercache, childptr2);
+
 
     b.info.numkeys++;
     b.SetKey(0, key);
     b.SetPtr(0, childptr);
+    b.SetPtr(1, childptr2);
     b.Serialize(buffercache, node);
     //return ERROR_NONEXISTENT;
   }
