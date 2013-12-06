@@ -1,0 +1,101 @@
+INIT 4 4
+UPDATE 0d5u 2yn5  # should fail
+DISPLAY  # should always succeed
+UPDATE o14u zcqd  # should fail
+DISPLAY  # should always succeed
+DISPLAY  # should always succeed
+UPDATE jj7p 2ec7  # should fail
+INSERT fnft 5pjl  # should succeed
+INSERT fnft 1zh1  # should fail
+LOOKUP fnft  # should succeed and return 5pjl
+UPDATE fnft ypvu  # should succeed
+LOOKUP qwe8  # should fail
+UPDATE ql8m od89  # should fail
+LOOKUP 5f6x  # should fail
+INSERT 8822 uk8u  # should succeed
+DISPLAY  # should always succeed
+LOOKUP fnft  # should succeed and return ypvu
+INSERT 10vp x0cb  # should succeed
+INSERT fnft ekcy  # should fail
+LOOKUP fnft  # should succeed and return ypvu
+UPDATE ff3t lsph  # should fail
+INSERT 10vp vr71  # should fail
+INSERT ar44 d42u  # should succeed
+INSERT 306s 58ur  # should succeed
+LOOKUP 306s  # should succeed and return 58ur
+UPDATE 8822 i9fz  # should succeed
+LOOKUP 9xx4  # should fail
+LOOKUP 8l2f  # should fail
+UPDATE 306s p95q  # should succeed
+UPDATE 440e r2ru  # should fail
+DISPLAY  # should always succeed
+INSERT lpud yvi0  # should succeed
+UPDATE fnft ctna  # should succeed
+INSERT 10vp a1w7  # should fail
+DISPLAY  # should always succeed
+LOOKUP ar44  # should succeed and return d42u
+UPDATE lhvn fq2g  # should fail
+INSERT ar44 fwie  # should fail
+UPDATE 10vp 1nuc  # should succeed
+LOOKUP 8822  # should succeed and return i9fz
+INSERT ar44 3t0r  # should fail
+UPDATE rrr4 7ntv  # should fail
+LOOKUP pzh1  # should fail
+LOOKUP 306s  # should succeed and return p95q
+INSERT 678w cewc  # should succeed
+DISPLAY  # should always succeed
+UPDATE w7uu qei9  # should fail
+DISPLAY  # should always succeed
+UPDATE ar44 03rv  # should succeed
+INSERT fzv5 phgy  # should succeed
+UPDATE jirj qikx  # should fail
+INSERT fzv5 p1on  # should fail
+LOOKUP t6x7  # should fail
+INSERT gx1y 116h  # should succeed
+LOOKUP vwnc  # should fail
+UPDATE mrsk ix6y  # should fail
+INSERT 4uga rugv  # should succeed
+LOOKUP l81w  # should fail
+INSERT e1rz exoz  # should succeed
+INSERT fzv5 j2ej  # should fail
+INSERT hhwv tuec  # should succeed
+UPDATE ar44 ulmh  # should succeed
+LOOKUP bb3c  # should fail
+LOOKUP o57a  # should fail
+LOOKUP 306s  # should succeed and return p95q
+UPDATE lpud 9am4  # should succeed
+DISPLAY  # should always succeed
+LOOKUP udgi  # should fail
+LOOKUP 9s6q  # should fail
+DISPLAY  # should always succeed
+LOOKUP e1rz  # should succeed and return exoz
+INSERT fzjt cfod  # should succeed
+LOOKUP aiuf  # should fail
+UPDATE cfdf qzru  # should fail
+DISPLAY  # should always succeed
+INSERT kkld dhdg  # should succeed
+INSERT e1rz 7tqz  # should fail
+DISPLAY  # should always succeed
+INSERT 306s qy64  # should fail
+INSERT hhwv d2nq  # should fail
+LOOKUP hhwv  # should succeed and return tuec
+LOOKUP ceux  # should fail
+INSERT s4fa 6hg8  # should succeed
+INSERT fzjt vy1i  # should fail
+UPDATE n3fw epas  # should fail
+DISPLAY  # should always succeed
+LOOKUP bosk  # should fail
+UPDATE 4uga n8cw  # should succeed
+INSERT 4uga 8gp2  # should fail
+INSERT tiw1 gr7l  # should succeed
+LOOKUP ar44  # should succeed and return ulmh
+LOOKUP 678w  # should succeed and return cewc
+UPDATE fzjt df72  # should succeed
+UPDATE lpud etmn  # should succeed
+LOOKUP e1rz  # should succeed and return exoz
+INSERT 678w rr8k  # should fail
+DISPLAY  # should always succeed
+INSERT hhwv 0mx5  # should fail
+LOOKUP 27lr  # should fail
+DISPLAY  # should always succeed
+DEINIT

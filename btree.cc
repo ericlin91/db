@@ -210,7 +210,8 @@ ERROR_T BTreeIndex::LookupOrUpdateInternal(const SIZE_T &node,
     for (offset=0;offset<b.info.numkeys;offset++) { 
       rc=b.GetKey(offset,testkey);
       if (rc) {  return rc; }
-      if (key<testkey || key==testkey) {
+      //if (key<testkey || key==testkey) {
+      if (key<testkey) {
       	// OK, so we now have the first key that's larger
       	// so we ned to recurse on the ptr immediately previous to 
       	// this one, if it exists
@@ -404,6 +405,8 @@ ERROR_T BTreeIndex::Insert(const KEY_T &key, const VALUE_T &value)
         }
       }
 
+      //END CASE
+
       //slide everything over
       int i;
       SIZE_T ptrhold;
@@ -487,7 +490,7 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
   //figure out which child it should go to
   //the desired child will be saved in childptr
   // Scan through key/ptr pairs
-  //childfound=0;
+  childfound=0;
   for (offset=0;offset<b.info.numkeys;offset++) { 
     rc=b.GetKey(offset,keyhold);
     if (rc) {  return rc; }
@@ -497,16 +500,16 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
       // this one, if it exists
       rc=b.GetPtr(offset,childptr);
       if (rc) { return rc; }
-      //childfound=1;
+      childfound=1;
       break;
     }
   }
   // if we got here, we need to go to the next pointer, if it exists
-  if (b.info.numkeys>0) { 
+  if (b.info.numkeys>0 && childfound==0) { 
     rc=b.GetPtr(b.info.numkeys,childptr);
     if (rc) { return rc; }
   } 
-  else {
+  if (b.info.numkeys==0) {
     // There are no keys at all on this node, so nowhere to go
     //should only get here if root on initialization
     //make TWO children 
@@ -527,8 +530,8 @@ ERROR_T BTreeIndex::InsertInternal(SIZE_T &node, const KEY_T &key, const VALUE_T
 
     b.info.numkeys=1;
     b.SetKey(0, key);
-    b.SetPtr(0, childptr);
-    b.SetPtr(1, childptr2);
+    b.SetPtr(1, childptr);
+    b.SetPtr(0, childptr2);
     b.Serialize(buffercache, node);
     //return ERROR_NONEXISTENT;
   }
