@@ -715,14 +715,14 @@ ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, const KEY_T &key, const VALUE_T
   int counter;
   int insertAt; //holds offset of insert
   int inArray; //check if new key is in array yet 1 if yes, 0 if no
-  KEY_T keyarr[old.info.numkeys+1];
-  VALUE_T valarr[old.info.numkeys+1];
-  SIZE_T ptrarr[old.info.numkeys+2];
+
   //generate nnode, copy of the node we want to split
   rc = old.Unserialize(buffercache, node_to_split);
   if (rc!=ERROR_NOERROR) { return rc;}
   nnode = old;
-
+  KEY_T keyarr[old.info.numkeys+1];
+  VALUE_T valarr[old.info.numkeys+1];
+  SIZE_T ptrarr[old.info.numkeys+2];
   
 
   // //two cases: leaf or not leaf
@@ -752,7 +752,7 @@ ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, const KEY_T &key, const VALUE_T
       }
       keyarr[counter]=keyhold;
       old.GetVal(offset, valhold);
-      valarr[counter]=old.GetVal(offset, valhold);
+      valarr[counter]=valhold;
       counter++;
     }
     if(inArray==0){
@@ -829,7 +829,7 @@ ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, const KEY_T &key, const VALUE_T
       counter++;
     }
     if(inArray==0){
-      keyarr[old.info.numkeys+1] = newnode;
+      ptrarr[old.info.numkeys+1] = newnode;
     }
 
     unsigned int i; //our for loop increment for keys
