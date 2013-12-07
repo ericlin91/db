@@ -126,6 +126,7 @@ public:
   // Is it a tree?  Is it in order?  Is it balanced?  Does each node have
   // a valid use ratio?
   ERROR_T SanityCheck() const;
+  ERROR_T InternalCheck(const SIZE_T &node) const;
 
   // Display tree
   // BTREE_DEPTH means to do a depth first traversal of 

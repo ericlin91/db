@@ -984,10 +984,94 @@ ERROR_T BTreeIndex::Display(ostream &o, BTreeDisplayType display_type) const
 ERROR_T BTreeIndex::SanityCheck() const
 {
   // WRITE ME
-  return ERROR_UNIMPL;
+  ERROR_T rc;
+  rc = InternalCheck(superblock.info.rootnode);
+  if(rc == ERROR_CONFLICT){
+    cout << "Keys not in order.";
+    return ERROR_INSANE;
+  }
+  if(rc == ERROR_NOSPACE){
+    cout << "Node too full.";
+    return ERROR_INSANE;
+  } 
+  else{
+    cerr << "Sanity check passed. Keys in order and no nodes too full.";
+  }
+  return ERROR_NOERROR;
 }
   
+ERROR_T BTreeIndex::InternalCheck(const SIZE_T &node) const
+{
 
+  KEY_T testkey;
+  SIZE_T ptr;
+  BTreeNode b;
+  ERROR_T rc;
+  SIZE_T offset;
+
+     unsigned int i;
+      KEY_T holder;
+      KEY_T ref;
+
+  //get current node from disk
+  rc = b.Unserialize(buffercache, node);
+  if(rc!=ERROR_NOERROR){
+    return rc;
+  }
+
+  //switch nodetype to determine actions
+  switch (b.info.nodetype) {
+    case BTREE_ROOT_NODE:
+      //actions to check if root node
+    case BTREE_INTERIOR_NODE:
+
+
+      if(b.info.numkeys>b.info.GetNumSlotsAsInterior()){
+        return ERROR_NOSPACE;
+      }
+
+      //check order
+      b.GetKey(0, ref);
+      for(i=1; i<b.info.numkeys; i++){
+        b.GetKey(i, holder);
+        if(holder<ref){
+          return ERROR_CONFLICT;
+        }
+        ref=holder;
+      }
+
+      if (b.info.numkeys > 0) {
+        //loop through interior pointers
+        for(offset=0;offset<=b.info.numkeys; offset++){
+          rc=b.GetPtr(offset,ptr);
+          if (rc) { return rc; }
+          rc = InternalCheck(ptr);
+          if (rc) { return rc; }
+        }
+      }
+    case BTREE_LEAF_NODE:
+      //collect data about leaf key
+      if(b.info.numkeys>b.info.GetNumSlotsAsLeaf()){
+        return ERROR_NOSPACE;
+      }
+
+      //check order
+      b.GetKey(0, ref);
+      for(i=1; i<b.info.numkeys; i++){
+        b.GetKey(i, holder);
+        if(holder<ref){
+          return ERROR_CONFLICT;
+        }
+        ref=holder;
+      }    
+      return ERROR_NOERROR;
+
+    default:
+      return ERROR_INSANE;
+  }
+      return ERROR_INSANE;
+
+}
 
 ostream & BTreeIndex::Print(ostream &os) const
 {

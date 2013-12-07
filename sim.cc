@@ -113,6 +113,9 @@ int main(int argc, char *argv[])
 	  cout <<"FAIL"<<endl;
 	  cerr <<"Can't detach cache due to error "<<rc<<endl;
 	} else {
+    cerr << "\n";
+    btree->SanityCheck();
+    cerr << "\n";
 	  delete btree;
 	  cout << "OK\n";
 	}
@@ -121,6 +124,7 @@ int main(int argc, char *argv[])
   }
     
   fclose(file);
+
 
   return 0;
 
