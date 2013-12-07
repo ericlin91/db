@@ -792,8 +792,8 @@ ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, const KEY_T &key, const VALUE_T
     }
     int n = old.info.numkeys; //total number of keys before insertion
 
-    old.info.numkeys = (n+1)/2; //(n+1) instead of (n) account for rounding cuz we want ceiling
-    nnode.info.numkeys = n-old.info.numkeys; //total minus the keys in oldnode
+    // old.info.numkeys = (n+1)/2; //(n+1) instead of (n) account for rounding cuz we want ceiling
+    // nnode.info.numkeys = n-old.info.numkeys; //total minus the keys in oldnode
 
     //fill a sorted array with all the keys, including new keys
     counter=0;
@@ -814,6 +814,9 @@ ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, const KEY_T &key, const VALUE_T
       keyarr[old.info.numkeys] = key;
     }
 
+
+
+
     //fill a sorted array with all the ptrs, including new ptr
     counter=0;
     inArray=0;
@@ -831,6 +834,10 @@ ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, const KEY_T &key, const VALUE_T
     if(inArray==0){
       ptrarr[old.info.numkeys+1] = newnode;
     }
+
+    old.info.numkeys = (n+1)/2; //(n+1) instead of (n) account for rounding cuz we want ceiling
+    nnode.info.numkeys = n-old.info.numkeys; //total minus the keys in oldnode
+
 
     unsigned int i; //our for loop increment for keys
     unsigned int k; //our loop increment for ptrs
@@ -853,9 +860,9 @@ ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, const KEY_T &key, const VALUE_T
       nnode.SetKey(j, keyarr[i]);
       i++;
     }
-    for(j=0; j<nnode.info.numkeys; j++){
+    for(j=0; j<nnode.info.numkeys+1; j++){
       nnode.SetPtr(j, ptrarr[k]);
-      i++;
+      k++;
     }
   }
 

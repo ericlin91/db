@@ -18,4 +18,4 @@ rm disk.config
 ./btree_insert disk 100 kkkk 2000
 ./btree_insert disk 100 llll 3000
 ./btree_insert disk 100 mmmm 4000
-#./btree_insert disk 100 nnnn 5000
+./btree_insert disk 100 nnnn 5000
