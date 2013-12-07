@@ -1,0 +1,1001 @@
+INIT 4 4
+UPDATE 0d5u 2yn5  # should fail
+DISPLAY  # should always succeed
+UPDATE o14u zcqd  # should fail
+DISPLAY  # should always succeed
+DISPLAY  # should always succeed
+UPDATE jj7p 2ec7  # should fail
+INSERT fnft 5pjl  # should succeed
+INSERT fnft 1zh1  # should fail
+LOOKUP fnft  # should succeed and return 5pjl
+UPDATE fnft ypvu  # should succeed
+LOOKUP qwe8  # should fail
+UPDATE ql8m od89  # should fail
+LOOKUP 5f6x  # should fail
+INSERT 8822 uk8u  # should succeed
+DISPLAY  # should always succeed
+LOOKUP fnft  # should succeed and return ypvu
+INSERT 10vp x0cb  # should succeed
+INSERT fnft ekcy  # should fail
+LOOKUP fnft  # should succeed and return ypvu
+UPDATE ff3t lsph  # should fail
+INSERT 10vp vr71  # should fail
+INSERT ar44 d42u  # should succeed
+INSERT 306s 58ur  # should succeed
+LOOKUP 306s  # should succeed and return 58ur
+UPDATE 8822 i9fz  # should succeed
+LOOKUP 9xx4  # should fail
+LOOKUP 8l2f  # should fail
+UPDATE 306s p95q  # should succeed
+UPDATE 440e r2ru  # should fail
+DISPLAY  # should always succeed
+INSERT lpud yvi0  # should succeed
+UPDATE fnft ctna  # should succeed
+INSERT 10vp a1w7  # should fail
+DISPLAY  # should always succeed
+LOOKUP ar44  # should succeed and return d42u
+UPDATE lhvn fq2g  # should fail
+INSERT ar44 fwie  # should fail
+UPDATE 10vp 1nuc  # should succeed
+LOOKUP 8822  # should succeed and return i9fz
+INSERT ar44 3t0r  # should fail
+UPDATE rrr4 7ntv  # should fail
+LOOKUP pzh1  # should fail
+LOOKUP 306s  # should succeed and return p95q
+INSERT 678w cewc  # should succeed
+DISPLAY  # should always succeed
+UPDATE w7uu qei9  # should fail
+DISPLAY  # should always succeed
+UPDATE ar44 03rv  # should succeed
+INSERT fzv5 phgy  # should succeed
+UPDATE jirj qikx  # should fail
+INSERT fzv5 p1on  # should fail
+LOOKUP t6x7  # should fail
+INSERT gx1y 116h  # should succeed
+LOOKUP vwnc  # should fail
+UPDATE mrsk ix6y  # should fail
+INSERT 4uga rugv  # should succeed
+LOOKUP l81w  # should fail
+INSERT e1rz exoz  # should succeed
+INSERT fzv5 j2ej  # should fail
+INSERT hhwv tuec  # should succeed
+UPDATE ar44 ulmh  # should succeed
+LOOKUP bb3c  # should fail
+LOOKUP o57a  # should fail
+LOOKUP 306s  # should succeed and return p95q
+UPDATE lpud 9am4  # should succeed
+DISPLAY  # should always succeed
+LOOKUP udgi  # should fail
+LOOKUP 9s6q  # should fail
+DISPLAY  # should always succeed
+LOOKUP e1rz  # should succeed and return exoz
+INSERT fzjt cfod  # should succeed
+LOOKUP aiuf  # should fail
+UPDATE cfdf qzru  # should fail
+DISPLAY  # should always succeed
+INSERT kkld dhdg  # should succeed
+INSERT e1rz 7tqz  # should fail
+DISPLAY  # should always succeed
+INSERT 306s qy64  # should fail
+INSERT hhwv d2nq  # should fail
+LOOKUP hhwv  # should succeed and return tuec
+LOOKUP ceux  # should fail
+INSERT s4fa 6hg8  # should succeed
+INSERT fzjt vy1i  # should fail
+UPDATE n3fw epas  # should fail
+DISPLAY  # should always succeed
+LOOKUP bosk  # should fail
+UPDATE 4uga n8cw  # should succeed
+INSERT 4uga 8gp2  # should fail
+INSERT tiw1 gr7l  # should succeed
+LOOKUP ar44  # should succeed and return ulmh
+LOOKUP 678w  # should succeed and return cewc
+UPDATE fzjt df72  # should succeed
+UPDATE lpud etmn  # should succeed
+LOOKUP e1rz  # should succeed and return exoz
+INSERT 678w rr8k  # should fail
+DISPLAY  # should always succeed
+INSERT hhwv 0mx5  # should fail
+LOOKUP 27lr  # should fail
+DISPLAY  # should always succeed
+LOOKUP fzjt  # should succeed and return df72
+INSERT plzm te07  # should succeed
+INSERT 8aoh dbop  # should succeed
+LOOKUP j3dx  # should fail
+DISPLAY  # should always succeed
+DISPLAY  # should always succeed
+UPDATE wdh5 9a5e  # should fail
+INSERT ue5t plp8  # should succeed
+INSERT gx1y 47eq  # should fail
+LOOKUP 8aoh  # should succeed and return dbop
+UPDATE ewwr s2kp  # should fail
+INSERT i6u3 2zm7  # should succeed
+UPDATE 04ml mtta  # should fail
+DISPLAY  # should always succeed
+DISPLAY  # should always succeed
+UPDATE sivk 6ukr  # should fail
+UPDATE xe3s ofzr  # should fail
+INSERT fzv5 4r6d  # should fail
+UPDATE y16p 4myh  # should fail
+DISPLAY  # should always succeed
+UPDATE on5o 1un6  # should fail
+INSERT plzm 481f  # should fail
+UPDATE sl9z upoh  # should fail
+UPDATE fzv5 ack5  # should succeed
+UPDATE 306s p5l9  # should succeed
+INSERT j3b1 nibl  # should succeed
+UPDATE gx1y vwwu  # should succeed
+LOOKUP fnft  # should succeed and return ctna
+LOOKUP gx1y  # should succeed and return vwwu
+INSERT nwv7 233w  # should succeed
+LOOKUP 4uga  # should succeed and return n8cw
+INSERT gvgp ssql  # should succeed
+UPDATE 1pu4 2e7u  # should fail
+DISPLAY  # should always succeed
+LOOKUP ibld  # should fail
+LOOKUP kkld  # should succeed and return dhdg
+DISPLAY  # should always succeed
+INSERT 3dl6 ff4a  # should succeed
+UPDATE fnft vle8  # should succeed
+INSERT etoh oh8t  # should succeed
+LOOKUP m3t1  # should fail
+INSERT 72q7 ec6j  # should succeed
+UPDATE 8822 auvc  # should succeed
+DISPLAY  # should always succeed
+INSERT 8aoh fh70  # should fail
+UPDATE kf84 gylf  # should fail
+INSERT gvgp yiiy  # should fail
+LOOKUP 8822  # should succeed and return auvc
+INSERT 4uga 1ei9  # should fail
+INSERT vsoh ys2q  # should succeed
+UPDATE ewwt ejbn  # should fail
+UPDATE vaaj 70sj  # should fail
+UPDATE gvgp 4btl  # should succeed
+LOOKUP etoh  # should succeed and return oh8t
+UPDATE 83wy a9eb  # should fail
+DISPLAY  # should always succeed
+INSERT gx1y wbgc  # should fail
+LOOKUP 306s  # should succeed and return p5l9
+UPDATE 678w f4oc  # should succeed
+UPDATE 6zqj gm0m  # should fail
+INSERT 3dl6 we0g  # should fail
+INSERT sfxm rt85  # should succeed
+LOOKUP 4uga  # should succeed and return n8cw
+LOOKUP tiw1  # should succeed and return gr7l
+LOOKUP 0c0o  # should fail
+UPDATE fnft osr1  # should succeed
+UPDATE gx1y 3sqo  # should succeed
+INSERT hhwv 4h7q  # should fail
+LOOKUP tiw1  # should succeed and return gr7l
+UPDATE iur1 n300  # should fail
+UPDATE j3b1 odeg  # should succeed
+UPDATE j3b1 37g6  # should succeed
+UPDATE afhy 5dh0  # should fail
+INSERT kkld 2b0r  # should fail
+INSERT ue5t 1ikn  # should fail
+LOOKUP y2l0  # should fail
+INSERT gntt yqun  # should succeed
+UPDATE gvgp 5ab0  # should succeed
+UPDATE mmx5 h92b  # should fail
+LOOKUP fzjt  # should succeed and return df72
+DISPLAY  # should always succeed
+LOOKUP a9fb  # should fail
+UPDATE 9hz0 mci5  # should fail
+INSERT vnln dbo1  # should succeed
+UPDATE 72q7 taep  # should succeed
+INSERT gqm5 puun  # should succeed
+LOOKUP tiw1  # should succeed and return gr7l
+INSERT 9fey v0lm  # should succeed
+DISPLAY  # should always succeed
+LOOKUP 9fey  # should succeed and return v0lm
+LOOKUP vsoh  # should succeed and return ys2q
+INSERT 4cig wvhq  # should succeed
+LOOKUP 7cor  # should fail
+DISPLAY  # should always succeed
+INSERT 678w zcss  # should fail
+INSERT 1dk6 5naz  # should succeed
+INSERT v74q u3wk  # should succeed
+DISPLAY  # should always succeed
+INSERT lpud 1i3m  # should fail
+INSERT gnv5 jilu  # should succeed
+UPDATE gvgp jd9s  # should succeed
+LOOKUP tiw1  # should succeed and return gr7l
+LOOKUP ue5t  # should succeed and return plp8
+UPDATE wfqn muz1  # should fail
+INSERT ay1j fl1i  # should succeed
+UPDATE fnft umnz  # should succeed
+INSERT lfcj pj2n  # should succeed
+INSERT tc2v i9o2  # should succeed
+DISPLAY  # should always succeed
+UPDATE j3b1 3wbq  # should succeed
+DISPLAY  # should always succeed
+UPDATE 4lxw 6xs7  # should fail
+LOOKUP tsrn  # should fail
+UPDATE rdop vhou  # should fail
+LOOKUP vsoh  # should succeed and return ys2q
+UPDATE y2v8 s3vy  # should fail
+UPDATE w8mx tjb7  # should fail
+LOOKUP 8822  # should succeed and return auvc
+LOOKUP 3dl6  # should succeed and return ff4a
+LOOKUP 1dk6  # should succeed and return 5naz
+LOOKUP zng6  # should fail
+UPDATE hhwv 5dna  # should succeed
+UPDATE 72q7 4lz9  # should succeed
+DISPLAY  # should always succeed
+DISPLAY  # should always succeed
+UPDATE plzm td9n  # should succeed
+UPDATE k19t oysw  # should fail
+INSERT 4uga 6m2v  # should fail
+UPDATE tira llrr  # should fail
+LOOKUP 5lkc  # should fail
+DISPLAY  # should always succeed
+UPDATE t7x3 h07h  # should fail
+UPDATE 10vp l2hq  # should succeed
+UPDATE uzf4 i0rs  # should fail
+LOOKUP 5017  # should fail
+DISPLAY  # should always succeed
+LOOKUP gnv5  # should succeed and return jilu
+UPDATE 10vp rynb  # should succeed
+UPDATE vibu 0845  # should fail
+LOOKUP p389  # should fail
+INSERT z5xr 7haq  # should succeed
+INSERT 2du0 19im  # should succeed
+UPDATE w46r 4kn1  # should fail
+LOOKUP ouah  # should fail
+LOOKUP 9fey  # should succeed and return v0lm
+UPDATE wvmb tdki  # should fail
+UPDATE gnv5 9pqf  # should succeed
+LOOKUP gx1y  # should succeed and return 3sqo
+DISPLAY  # should always succeed
+INSERT 90ky oppc  # should succeed
+UPDATE 2wlk ij50  # should fail
+LOOKUP c6jq  # should fail
+UPDATE 7mjc p6po  # should fail
+UPDATE 4hsk t8df  # should fail
+INSERT fnft t7ga  # should fail
+LOOKUP gvgv  # should fail
+LOOKUP 10vp  # should succeed and return rynb
+LOOKUP t4wr  # should fail
+UPDATE c8ce rnfr  # should fail
+INSERT p9jr yp0g  # should succeed
+UPDATE v74q azdr  # should succeed
+DISPLAY  # should always succeed
+INSERT v74q 01xx  # should fail
+LOOKUP 3dl6  # should succeed and return ff4a
+DISPLAY  # should always succeed
+DISPLAY  # should always succeed
+DISPLAY  # should always succeed
+UPDATE 1jvu 2fti  # should fail
+INSERT k68g 8vkt  # should succeed
+INSERT qg77 2bqi  # should succeed
+INSERT plzm xmd7  # should fail
+UPDATE 0e65 935l  # should fail
+DISPLAY  # should always succeed
+UPDATE m68q 7y61  # should fail
+LOOKUP gntt  # should succeed and return yqun
+LOOKUP 4h65  # should fail
+LOOKUP bnhd  # should fail
+DISPLAY  # should always succeed
+DISPLAY  # should always succeed
+UPDATE 28gn oqf2  # should fail
+INSERT gx1y itew  # should fail
+INSERT ar4k 00qv  # should succeed
+INSERT 4uga zc73  # should fail
+UPDATE j3b1 7o20  # should succeed
+UPDATE fpud 8ny1  # should fail
+DISPLAY  # should always succeed
+DISPLAY  # should always succeed
+UPDATE vnln 6zvd  # should succeed
+UPDATE hhwv i5td  # should succeed
+UPDATE gx1y 15yq  # should succeed
+UPDATE v74q yjpd  # should succeed
+INSERT 7x8h 4x21  # should succeed
+UPDATE c1oc y597  # should fail
+LOOKUP 4cdb  # should fail
+UPDATE bcmi 2jkl  # should fail
+LOOKUP 90ky  # should succeed and return oppc
+LOOKUP fzjt  # should succeed and return df72
+LOOKUP l0au  # should fail
+LOOKUP w4uj  # should fail
+UPDATE s4fa g5uy  # should succeed
+UPDATE ue5t dkrb  # should succeed
+INSERT 90ky a16i  # should fail
+INSERT k68g fh1x  # should fail
+INSERT etoh rrtb  # should fail
+UPDATE nwv7 dynb  # should succeed
+UPDATE plzm lynj  # should succeed
+UPDATE 6x1u z2r4  # should fail
+LOOKUP 81ch  # should fail
+LOOKUP k201  # should fail
+UPDATE qg77 x8ob  # should succeed
+LOOKUP 3qfx  # should fail
+LOOKUP b6pl  # should fail
+LOOKUP i6u3  # should succeed and return 2zm7
+INSERT sclq x982  # should succeed
+INSERT vnln ydfp  # should fail
+LOOKUP lfcj  # should succeed and return pj2n
+UPDATE gx1y bpi3  # should succeed
+INSERT 24fm ja6u  # should succeed
+UPDATE etoh s83m  # should succeed
+LOOKUP sijo  # should fail
+UPDATE tc2v iwmt  # should succeed
+UPDATE 7f8z zo89  # should fail
+LOOKUP gntt  # should succeed and return yqun
+DISPLAY  # should always succeed
+INSERT 8822 vrrp  # should fail
+LOOKUP 678w  # should succeed and return f4oc
+LOOKUP ai19  # should fail
+UPDATE 7hak s71h  # should fail
+DISPLAY  # should always succeed
+INSERT tiw1 id3h  # should fail
+UPDATE v4kp e76u  # should fail
+DISPLAY  # should always succeed
+INSERT tc2v 84wh  # should fail
+UPDATE huzk nqru  # should fail
+UPDATE 8d3a bwhk  # should fail
+INSERT 1wxd 9o9p  # should succeed
+INSERT 30gf hvk4  # should succeed
+INSERT 30gf lg9r  # should fail
+INSERT ofrv a6oh  # should succeed
+LOOKUP oht8  # should fail
+INSERT sa2w 4g5k  # should succeed
+UPDATE w7br y0lg  # should fail
+UPDATE thvh 3a8o  # should fail
+DISPLAY  # should always succeed
+UPDATE fdyt yzvz  # should fail
+INSERT gntt o8u1  # should fail
+DISPLAY  # should always succeed
+INSERT bv8e viop  # should succeed
+LOOKUP 4cig  # should succeed and return wvhq
+LOOKUP 4rcs  # should fail
+LOOKUP 6pt4  # should fail
+INSERT nwv7 vbvb  # should fail
+UPDATE 306s md06  # should succeed
+DISPLAY  # should always succeed
+UPDATE g3u2 1ncl  # should fail
+INSERT g858 9if0  # should succeed
+UPDATE v74q 0150  # should succeed
+UPDATE 7x8h 1p99  # should succeed
+LOOKUP x809  # should fail
+UPDATE 19ue wukx  # should fail
+INSERT gx1y 3z4l  # should fail
+LOOKUP q8pe  # should fail
+INSERT nwv7 vxi2  # should fail
+UPDATE 0t1n 3hvs  # should fail
+LOOKUP 72q7  # should succeed and return 4lz9
+INSERT 24fm od2m  # should fail
+INSERT 1dk6 8225  # should fail
+LOOKUP a59r  # should fail
+LOOKUP o5sa  # should fail
+LOOKUP 678w  # should succeed and return f4oc
+UPDATE l556 6my5  # should fail
+UPDATE t8in 4rke  # should fail
+LOOKUP 71m6  # should fail
+UPDATE ejsg b6j3  # should fail
+INSERT k4n9 sa5n  # should succeed
+DISPLAY  # should always succeed
+LOOKUP gntt  # should succeed and return yqun
+INSERT rpul tkab  # should succeed
+INSERT fi4c djse  # should succeed
+UPDATE fim1 0u7o  # should fail
+UPDATE cuaj vozl  # should fail
+DISPLAY  # should always succeed
+UPDATE 24fm dn0j  # should succeed
+INSERT g9oc rznk  # should succeed
+DISPLAY  # should always succeed
+DISPLAY  # should always succeed
+UPDATE pv3i tgpb  # should fail
+LOOKUP g858  # should succeed and return 9if0
+LOOKUP gqm5  # should succeed and return puun
+UPDATE gjne bjbb  # should fail
+UPDATE gx1y tqnt  # should succeed
+DISPLAY  # should always succeed
+UPDATE gvgp mtjh  # should succeed
+INSERT nwv7 2emh  # should fail
+INSERT 30gf xv2d  # should fail
+UPDATE hhwv 2pu9  # should succeed
+INSERT hhcc wpzz  # should succeed
+UPDATE ca1u k2ly  # should fail
+INSERT v74q smty  # should fail
+INSERT d0jj l25y  # should succeed
+INSERT bca5 lbck  # should succeed
+UPDATE bca5 wedt  # should succeed
+LOOKUP fqc5  # should fail
+UPDATE q3vq osde  # should fail
+UPDATE j3b1 bprz  # should succeed
+UPDATE ggpc 0687  # should fail
+INSERT ar4k zy4x  # should fail
+UPDATE 4cig bow2  # should succeed
+INSERT g858 1f6q  # should fail
+LOOKUP etoh  # should succeed and return s83m
+UPDATE gqm5 osgl  # should succeed
+UPDATE mm7h m8fm  # should fail
+UPDATE tpw0 20zd  # should fail
+UPDATE kb3l nf7l  # should fail
+UPDATE xsgs jbuh  # should fail
+LOOKUP bne6  # should fail
+DISPLAY  # should always succeed
+UPDATE 9ku1 a9gk  # should fail
+LOOKUP lpud  # should succeed and return etmn
+UPDATE mhk8 25if  # should fail
+LOOKUP p9jr  # should succeed and return yp0g
+INSERT gnv5 7z7s  # should fail
+LOOKUP 306s  # should succeed and return md06
+INSERT ugq5 i6m5  # should succeed
+LOOKUP ufsm  # should fail
+UPDATE gqm5 nwg9  # should succeed
+UPDATE dzh6 45y6  # should fail
+LOOKUP etoh  # should succeed and return s83m
+LOOKUP aytn  # should fail
+INSERT s14m t078  # should succeed
+UPDATE e1rz wp5p  # should succeed
+INSERT pxhd meiu  # should succeed
+INSERT 64vo b9m1  # should succeed
+UPDATE vnln t2km  # should succeed
+DISPLAY  # should always succeed
+LOOKUP gvgp  # should succeed and return mtjh
+INSERT 7mvk 3g1x  # should succeed
+UPDATE pnfe tntf  # should fail
+LOOKUP bv8e  # should succeed and return viop
+INSERT v74q pvvh  # should fail
+UPDATE z5xr exyk  # should succeed
+LOOKUP 72q7  # should succeed and return 4lz9
+LOOKUP ryhg  # should fail
+LOOKUP fzv5  # should succeed and return ack5
+LOOKUP bca5  # should succeed and return wedt
+DISPLAY  # should always succeed
+LOOKUP enut  # should fail
+INSERT gx1y nvaz  # should fail
+INSERT ar44 6ob6  # should fail
+INSERT worg rkkb  # should succeed
+LOOKUP z2li  # should fail
+LOOKUP 3dl6  # should succeed and return ff4a
+UPDATE gzup yh1n  # should fail
+INSERT 70qq g124  # should succeed
+LOOKUP wqd1  # should fail
+LOOKUP axr1  # should fail
+UPDATE bv8e d368  # should succeed
+LOOKUP c31n  # should fail
+DISPLAY  # should always succeed
+UPDATE fi4c 1wnh  # should succeed
+UPDATE ar44 ok3f  # should succeed
+LOOKUP 7x8h  # should succeed and return 1p99
+LOOKUP wbcr  # should fail
+UPDATE j9it r3vb  # should fail
+LOOKUP j3b1  # should succeed and return bprz
+LOOKUP wjpv  # should fail
+LOOKUP gnv5  # should succeed and return 9pqf
+UPDATE 0ix7 umiq  # should fail
+LOOKUP 64vo  # should succeed and return b9m1
+UPDATE plzm b7i8  # should succeed
+INSERT q0mf w9ie  # should succeed
+INSERT i4vq qpr4  # should succeed
+LOOKUP skyk  # should fail
+INSERT arrl ltz9  # should succeed
+DISPLAY  # should always succeed
+INSERT ay1j zxek  # should fail
+LOOKUP hhwv  # should succeed and return 2pu9
+LOOKUP pwz1  # should fail
+DISPLAY  # should always succeed
+DISPLAY  # should always succeed
+INSERT sa2w korb  # should fail
+LOOKUP fzjt  # should succeed and return df72
+INSERT 47ck 1bdc  # should succeed
+INSERT p9jr my3y  # should fail
+UPDATE e1rz gpmb  # should succeed
+INSERT 7xwd 2ds3  # should succeed
+DISPLAY  # should always succeed
+INSERT uz1r qqnz  # should succeed
+UPDATE 0wvv iy6j  # should fail
+LOOKUP 0a1k  # should fail
+INSERT nk0k 858l  # should succeed
+INSERT rh8l goep  # should succeed
+INSERT vsoh 4vsa  # should fail
+DISPLAY  # should always succeed
+DISPLAY  # should always succeed
+INSERT gf7r bumq  # should succeed
+INSERT 47ck 0ep8  # should fail
+UPDATE arrl jxpb  # should succeed
+INSERT iv7m 1ksr  # should succeed
+INSERT 8aoh zaxs  # should fail
+UPDATE pgc4 abbr  # should fail
+UPDATE gppc 73vf  # should fail
+UPDATE 1wxd a2f5  # should succeed
+DISPLAY  # should always succeed
+INSERT rpul m1su  # should fail
+UPDATE vsoh ffd5  # should succeed
+UPDATE 7xwd 0ckj  # should succeed
+LOOKUP rh8l  # should succeed and return goep
+LOOKUP fudt  # should fail
+LOOKUP h3j1  # should fail
+INSERT il2n cwsk  # should succeed
+INSERT sfw7 iaru  # should succeed
+LOOKUP 234n  # should fail
+UPDATE fzjt 62p0  # should succeed
+INSERT gnv5 5eor  # should fail
+INSERT vsoh 5ekj  # should fail
+UPDATE j8wv xe5z  # should fail
+LOOKUP os49  # should fail
+INSERT 2du0 w3ml  # should fail
+UPDATE ugq5 bd4i  # should succeed
+UPDATE sa2w 4o71  # should succeed
+LOOKUP gnv5  # should succeed and return 9pqf
+LOOKUP etoh  # should succeed and return s83m
+DISPLAY  # should always succeed
+INSERT gf7r 1jvl  # should fail
+UPDATE bca5 g8t8  # should succeed
+DISPLAY  # should always succeed
+INSERT qg77 hfup  # should fail
+DISPLAY  # should always succeed
+LOOKUP zqyb  # should fail
+DISPLAY  # should always succeed
+UPDATE i4vq yerq  # should succeed
+DISPLAY  # should always succeed
+LOOKUP rypa  # should fail
+LOOKUP ewb2  # should fail
+LOOKUP sfxm  # should succeed and return rt85
+UPDATE ofrv mey9  # should succeed
+INSERT etoh 91o7  # should fail
+LOOKUP 48dp  # should fail
+LOOKUP j4ca  # should fail
+LOOKUP il2n  # should succeed and return cwsk
+LOOKUP iv7m  # should succeed and return 1ksr
+DISPLAY  # should always succeed
+UPDATE ar44 ydqv  # should succeed
+UPDATE el1o 2xh3  # should fail
+DISPLAY  # should always succeed
+INSERT b95y ux4m  # should succeed
+DISPLAY  # should always succeed
+UPDATE gx1y q7kx  # should succeed
+UPDATE 70qq o9p9  # should succeed
+INSERT gntt vj28  # should fail
+INSERT qvef ort8  # should succeed
+LOOKUP xasy  # should fail
+LOOKUP besn  # should fail
+UPDATE 8fyu qn1o  # should fail
+INSERT nwm0 nejz  # should succeed
+LOOKUP lag9  # should fail
+LOOKUP sr9g  # should fail
+UPDATE h1ly pmi8  # should fail
+LOOKUP nwm0  # should succeed and return nejz
+INSERT 24fm 56s7  # should fail
+UPDATE g858 g71f  # should succeed
+UPDATE cfqq 2jaf  # should fail
+LOOKUP hnpc  # should fail
+UPDATE g858 wdc8  # should succeed
+LOOKUP 78pw  # should fail
+DISPLAY  # should always succeed
+DISPLAY  # should always succeed
+INSERT uz1r lt8r  # should fail
+LOOKUP 2hru  # should fail
+UPDATE 6xfe 86jd  # should fail
+UPDATE 47ck 6bo7  # should succeed
+INSERT g080 ow49  # should succeed
+LOOKUP ofrv  # should succeed and return mey9
+LOOKUP ay1j  # should succeed and return fl1i
+LOOKUP 47ck  # should succeed and return 6bo7
+DISPLAY  # should always succeed
+INSERT hz9k oyov  # should succeed
+INSERT lx4r x39s  # should succeed
+UPDATE 4uga 9vqv  # should succeed
+INSERT xq1c f2zz  # should succeed
+INSERT rpal auo8  # should succeed
+DISPLAY  # should always succeed
+INSERT sfw7 6ug4  # should fail
+LOOKUP ja5k  # should fail
+LOOKUP kzgi  # should fail
+INSERT 0xt3 cza7  # should succeed
+DISPLAY  # should always succeed
+INSERT fzjt 8jgo  # should fail
+LOOKUP 4cig  # should succeed and return bow2
+LOOKUP sa2w  # should succeed and return 4o71
+UPDATE bv8e 2dez  # should succeed
+LOOKUP 005o  # should fail
+UPDATE uen0 v0dd  # should fail
+LOOKUP jh4m  # should fail
+LOOKUP 47ck  # should succeed and return 6bo7
+UPDATE qg77 z0f2  # should succeed
+LOOKUP lfcj  # should succeed and return pj2n
+LOOKUP bv8e  # should succeed and return 2dez
+UPDATE aj48 8s70  # should fail
+LOOKUP lpud  # should succeed and return etmn
+INSERT 306s 1ftk  # should fail
+LOOKUP fi4c  # should succeed and return 1wnh
+LOOKUP 4fjk  # should fail
+UPDATE fytd l75i  # should fail
+UPDATE al7n 7b14  # should fail
+LOOKUP qmz8  # should fail
+UPDATE 4cig xwlv  # should succeed
+INSERT 3sm9 ivfl  # should succeed
+UPDATE brgl dq95  # should fail
+DISPLAY  # should always succeed
+INSERT fnft 8r5d  # should fail
+LOOKUP nk0k  # should succeed and return 858l
+UPDATE xvly ukri  # should fail
+DISPLAY  # should always succeed
+LOOKUP 90ky  # should succeed and return oppc
+INSERT tiw1 0p8u  # should fail
+UPDATE wj1k 40h0  # should fail
+INSERT p9jr 6g07  # should fail
+UPDATE 0shz k05n  # should fail
+INSERT gqfy renh  # should succeed
+INSERT 47ck x7w0  # should fail
+UPDATE ixpi 8672  # should fail
+LOOKUP ng2k  # should fail
+UPDATE tiw1 1fh4  # should succeed
+INSERT gzm5 zuh0  # should succeed
+LOOKUP mexb  # should fail
+LOOKUP vpc5  # should fail
+LOOKUP gntt  # should succeed and return yqun
+INSERT qg77 tp76  # should fail
+INSERT x1rh fdz3  # should succeed
+LOOKUP b95y  # should succeed and return ux4m
+INSERT 2du0 6ekb  # should fail
+LOOKUP y0m7  # should fail
+INSERT hhcc 2j6t  # should fail
+LOOKUP 9psi  # should fail
+DISPLAY  # should always succeed
+INSERT etoh tpq2  # should fail
+DISPLAY  # should always succeed
+LOOKUP ugq5  # should succeed and return bd4i
+INSERT kkld i17s  # should fail
+DISPLAY  # should always succeed
+DISPLAY  # should always succeed
+INSERT q0mf hsnt  # should fail
+LOOKUP worg  # should succeed and return rkkb
+UPDATE mif2 033u  # should fail
+LOOKUP b95y  # should succeed and return ux4m
+INSERT 10vp 5m8m  # should fail
+UPDATE f5nd 7gr5  # should fail
+UPDATE gvgp 3g67  # should succeed
+DISPLAY  # should always succeed
+UPDATE xu2p 7jyo  # should fail
+LOOKUP 2j1u  # should fail
+LOOKUP o69f  # should fail
+DISPLAY  # should always succeed
+UPDATE sfw7 x9vk  # should succeed
+UPDATE iv7m j6bn  # should succeed
+LOOKUP 9hej  # should fail
+LOOKUP etoh  # should succeed and return s83m
+INSERT 7mvk kb5v  # should fail
+LOOKUP lgvr  # should fail
+LOOKUP ihon  # should fail
+UPDATE fq9v 9b6o  # should fail
+DISPLAY  # should always succeed
+LOOKUP 4uga  # should succeed and return 9vqv
+LOOKUP gdzf  # should fail
+LOOKUP 1aja  # should fail
+DISPLAY  # should always succeed
+INSERT 24fm 90k0  # should fail
+LOOKUP 24fm  # should succeed and return dn0j
+UPDATE c355 1e28  # should fail
+LOOKUP kllq  # should fail
+UPDATE yn15 1bk5  # should fail
+LOOKUP 0vb8  # should fail
+LOOKUP gqm5  # should succeed and return nwg9
+DISPLAY  # should always succeed
+LOOKUP sfw7  # should succeed and return x9vk
+INSERT 9dok 8559  # should succeed
+UPDATE ntpy bzhh  # should fail
+UPDATE wpxq kk12  # should fail
+INSERT rqio 3wna  # should succeed
+INSERT bca5 p0ru  # should fail
+DISPLAY  # should always succeed
+INSERT ncm4 twr2  # should succeed
+DISPLAY  # should always succeed
+INSERT sje3 j0nk  # should succeed
+DISPLAY  # should always succeed
+UPDATE wxu2 nrf0  # should fail
+DISPLAY  # should always succeed
+LOOKUP d0jj  # should succeed and return l25y
+INSERT qvef tdxa  # should fail
+UPDATE m9gm 7dyw  # should fail
+LOOKUP 12ok  # should fail
+UPDATE 65k7 eabb  # should fail
+DISPLAY  # should always succeed
+LOOKUP hhwv  # should succeed and return 2pu9
+UPDATE 5f0r 3vlj  # should fail
+LOOKUP 0xt3  # should succeed and return cza7
+UPDATE iuov lb0f  # should fail
+INSERT rpul bv7d  # should fail
+LOOKUP hmab  # should fail
+LOOKUP kwe4  # should fail
+LOOKUP fe20  # should fail
+LOOKUP sje3  # should succeed and return j0nk
+DISPLAY  # should always succeed
+LOOKUP lpud  # should succeed and return etmn
+DISPLAY  # should always succeed
+UPDATE ofeq 38lx  # should fail
+LOOKUP k4n9  # should succeed and return sa5n
+INSERT sqhw budm  # should succeed
+LOOKUP 5ill  # should fail
+LOOKUP 9dok  # should succeed and return 8559
+LOOKUP tk09  # should fail
+INSERT 4cig nqsa  # should fail
+INSERT rpul 64o7  # should fail
+UPDATE 3sm9 tgpv  # should succeed
+DISPLAY  # should always succeed
+UPDATE 2jym 6qge  # should fail
+LOOKUP fue5  # should fail
+INSERT 3dl6 1jvz  # should fail
+LOOKUP mygt  # should fail
+UPDATE k4n9 s344  # should succeed
+INSERT pryy pnsj  # should succeed
+UPDATE bv8e ygju  # should succeed
+LOOKUP fi4c  # should succeed and return 1wnh
+LOOKUP cobg  # should fail
+UPDATE s3ts 7qjm  # should fail
+INSERT cz6k ztvz  # should succeed
+UPDATE v74q d8sa  # should succeed
+UPDATE rpul ei24  # should succeed
+DISPLAY  # should always succeed
+INSERT rqio 8lhd  # should fail
+LOOKUP gvsu  # should fail
+UPDATE x3u6 4cz1  # should fail
+DISPLAY  # should always succeed
+UPDATE ofrv oipf  # should succeed
+LOOKUP q9z3  # should fail
+DISPLAY  # should always succeed
+UPDATE g080 5mws  # should succeed
+INSERT lfcj pu3a  # should fail
+LOOKUP v9pf  # should fail
+UPDATE 1p5m 3sz7  # should fail
+LOOKUP q0mf  # should succeed and return w9ie
+DISPLAY  # should always succeed
+LOOKUP fap1  # should fail
+INSERT zbkq o6qq  # should succeed
+LOOKUP gqm5  # should succeed and return nwg9
+UPDATE d9z2 iq9w  # should fail
+INSERT vlyy r1kh  # should succeed
+LOOKUP lwng  # should fail
+INSERT gnv5 5vpm  # should fail
+LOOKUP q0mf  # should succeed and return w9ie
+UPDATE m4us g23i  # should fail
+INSERT klbn 3prx  # should succeed
+LOOKUP q6ht  # should fail
+LOOKUP 3dl6  # should succeed and return ff4a
+INSERT 1wxd chm2  # should fail
+UPDATE 64vo 9kp2  # should succeed
+DISPLAY  # should always succeed
+LOOKUP p9jr  # should succeed and return yp0g
+LOOKUP worg  # should succeed and return rkkb
+DISPLAY  # should always succeed
+UPDATE 1y2u az3l  # should fail
+UPDATE rpul n8tu  # should succeed
+DISPLAY  # should always succeed
+UPDATE gqm5 d6z2  # should succeed
+INSERT klbn 12hm  # should fail
+LOOKUP worg  # should succeed and return rkkb
+LOOKUP szan  # should fail
+DISPLAY  # should always succeed
+INSERT cz6k 52pu  # should fail
+UPDATE cz6k 231x  # should succeed
+UPDATE 72q7 svf8  # should succeed
+INSERT lyqo wn97  # should succeed
+INSERT smn9 20zb  # should succeed
+UPDATE 24fm lcim  # should succeed
+INSERT cz6k 6b5o  # should fail
+INSERT wq8i 8d1p  # should succeed
+DISPLAY  # should always succeed
+LOOKUP x6fc  # should fail
+LOOKUP te0k  # should fail
+UPDATE i6u3 tpm6  # should succeed
+LOOKUP 0wp7  # should fail
+DISPLAY  # should always succeed
+INSERT 72q7 3ujq  # should fail
+INSERT bb40 mekh  # should succeed
+INSERT 678w vs1i  # should fail
+INSERT v74q d16r  # should fail
+LOOKUP gqm5  # should succeed and return d6z2
+INSERT fzjt 4hu7  # should fail
+LOOKUP v1b0  # should fail
+INSERT tiw1 o1vk  # should fail
+UPDATE ovsg 4mkx  # should fail
+INSERT rpul wp94  # should fail
+UPDATE 8ade w3ae  # should fail
+LOOKUP e1rz  # should succeed and return gpmb
+LOOKUP gvno  # should fail
+UPDATE 117z bf49  # should fail
+UPDATE rpul vz8r  # should succeed
+UPDATE rq00 tkxu  # should fail
+UPDATE q0mf cnbz  # should succeed
+UPDATE 4tok giw8  # should fail
+LOOKUP 7fvo  # should fail
+INSERT ah41 o558  # should succeed
+UPDATE ew3x z4cw  # should fail
+LOOKUP mx8i  # should fail
+DISPLAY  # should always succeed
+LOOKUP pryy  # should succeed and return pnsj
+INSERT uz1r w4gh  # should fail
+LOOKUP s4fa  # should succeed and return g5uy
+UPDATE zbkq lb7t  # should succeed
+UPDATE ar44 3k9l  # should succeed
+UPDATE d4nq htw8  # should fail
+INSERT vlec 293j  # should succeed
+UPDATE kkld rkit  # should succeed
+UPDATE 17zk ttta  # should fail
+UPDATE s0hd 2zj0  # should fail
+UPDATE xg51 cr81  # should fail
+LOOKUP 1klw  # should fail
+LOOKUP xmpx  # should fail
+INSERT lyqo uzo6  # should fail
+INSERT 59ax mm26  # should succeed
+DISPLAY  # should always succeed
+UPDATE gvgp ojz3  # should succeed
+UPDATE ivbu 3z94  # should fail
+UPDATE 8w41 hliw  # should fail
+INSERT wr3x 5gak  # should succeed
+UPDATE d73h n9vj  # should fail
+UPDATE gnv5 ol0x  # should succeed
+DISPLAY  # should always succeed
+LOOKUP 8cu5  # should fail
+LOOKUP b6o2  # should fail
+INSERT gjfw g6u7  # should succeed
+LOOKUP dwmh  # should fail
+UPDATE lyqo e1sv  # should succeed
+UPDATE g80v 7uqo  # should fail
+UPDATE 10vp kklg  # should succeed
+UPDATE il2n civ6  # should succeed
+LOOKUP iv7m  # should succeed and return j6bn
+LOOKUP 3fne  # should fail
+LOOKUP z4jo  # should fail
+LOOKUP g858  # should succeed and return wdc8
+LOOKUP ywzi  # should fail
+LOOKUP nk0k  # should succeed and return 858l
+INSERT qefx eepn  # should succeed
+UPDATE w8h3 3ila  # should fail
+LOOKUP vnln  # should succeed and return t2km
+LOOKUP odfo  # should fail
+INSERT gjfw 8iau  # should fail
+LOOKUP bclr  # should fail
+LOOKUP q0mf  # should succeed and return cnbz
+UPDATE s4fa mxe6  # should succeed
+DISPLAY  # should always succeed
+DISPLAY  # should always succeed
+DISPLAY  # should always succeed
+LOOKUP qg77  # should succeed and return z0f2
+UPDATE j1xg zf72  # should fail
+DISPLAY  # should always succeed
+UPDATE lllr h5ow  # should fail
+LOOKUP nnth  # should fail
+LOOKUP 4bwl  # should fail
+DISPLAY  # should always succeed
+DISPLAY  # should always succeed
+LOOKUP 4cu6  # should fail
+INSERT tc2v kfnm  # should fail
+INSERT 7xwd 2og6  # should fail
+UPDATE 9fey tjcw  # should succeed
+LOOKUP v74q  # should succeed and return d8sa
+DISPLAY  # should always succeed
+DISPLAY  # should always succeed
+INSERT 5473 0c17  # should succeed
+UPDATE 678w 9sxg  # should succeed
+UPDATE izkc s2mg  # should fail
+DISPLAY  # should always succeed
+UPDATE v0jk j8gv  # should fail
+UPDATE i6u3 s94x  # should succeed
+INSERT gntt aiu1  # should fail
+UPDATE gvgp xm0z  # should succeed
+INSERT nwm0 hg7k  # should fail
+LOOKUP hz9k  # should succeed and return oyov
+UPDATE smn9 lng1  # should succeed
+LOOKUP sfxm  # should succeed and return rt85
+DISPLAY  # should always succeed
+DISPLAY  # should always succeed
+LOOKUP sje3  # should succeed and return j0nk
+LOOKUP oab9  # should fail
+DISPLAY  # should always succeed
+INSERT 0xt3 yb0f  # should fail
+LOOKUP vnln  # should succeed and return t2km
+DISPLAY  # should always succeed
+UPDATE 1spl r6yu  # should fail
+UPDATE 6hqf o9o9  # should fail
+LOOKUP zg3i  # should fail
+UPDATE i6cs 95xc  # should fail
+UPDATE smn9 uc63  # should succeed
+LOOKUP s14m  # should succeed and return t078
+UPDATE 468y h5xp  # should fail
+UPDATE hj44 ucdd  # should fail
+UPDATE 5gue aupa  # should fail
+DISPLAY  # should always succeed
+INSERT cu2e h47f  # should succeed
+INSERT z4rp p2vl  # should succeed
+UPDATE cmgy sby2  # should fail
+UPDATE s14m jtru  # should succeed
+LOOKUP c8hq  # should fail
+DISPLAY  # should always succeed
+INSERT zndn b21k  # should succeed
+UPDATE 8822 ewai  # should succeed
+LOOKUP ep3l  # should fail
+LOOKUP x1rh  # should succeed and return fdz3
+UPDATE bu87 bx3a  # should fail
+LOOKUP mgwg  # should fail
+UPDATE ar4k 5bix  # should succeed
+DISPLAY  # should always succeed
+UPDATE gjfw 7glf  # should succeed
+UPDATE rqio mi4o  # should succeed
+UPDATE vmst xmfv  # should fail
+INSERT 2du0 ksjk  # should fail
+INSERT sqhw sv7q  # should fail
+UPDATE cq9d 7ou5  # should fail
+INSERT p5ro fszy  # should succeed
+LOOKUP 8j9j  # should fail
+LOOKUP cmmd  # should fail
+UPDATE ar44 mp93  # should succeed
+DISPLAY  # should always succeed
+INSERT r9k6 pyyn  # should succeed
+DISPLAY  # should always succeed
+LOOKUP oeyv  # should fail
+UPDATE 4d69 6s79  # should fail
+LOOKUP ar4k  # should succeed and return 5bix
+INSERT 0xt3 258e  # should fail
+UPDATE g9oc v51k  # should succeed
+INSERT jgue wmqc  # should succeed
+INSERT uq0y s5t4  # should succeed
+UPDATE 81fo 5k15  # should fail
+UPDATE i6u3 mv1f  # should succeed
+UPDATE 90ky 6658  # should succeed
+LOOKUP v74q  # should succeed and return d8sa
+LOOKUP 1dk6  # should succeed and return 5naz
+UPDATE nk5e hmfo  # should fail
+INSERT sfxm vu3s  # should fail
+UPDATE 59ax z2si  # should succeed
+LOOKUP q67g  # should fail
+LOOKUP ych6  # should fail
+DISPLAY  # should always succeed
+DISPLAY  # should always succeed
+UPDATE vlec bb6k  # should succeed
+LOOKUP wev8  # should fail
+INSERT 4uga e19k  # should fail
+UPDATE f9i7 ywiv  # should fail
+LOOKUP pcow  # should fail
+UPDATE j3b1 ctl1  # should succeed
+UPDATE 13xp 6x52  # should fail
+INSERT fzjt w3tc  # should fail
+DISPLAY  # should always succeed
+INSERT hz8j rpd5  # should succeed
+LOOKUP 0gzm  # should fail
+UPDATE 64ho bnst  # should fail
+LOOKUP qg77  # should succeed and return z0f2
+INSERT k1im d95g  # should succeed
+INSERT cz6k 71ak  # should fail
+LOOKUP 9fey  # should succeed and return tjcw
+DISPLAY  # should always succeed
+UPDATE qg77 stu8  # should succeed
+DISPLAY  # should always succeed
+INSERT uof7 vhwp  # should succeed
+INSERT nwv7 can4  # should fail
+INSERT tc2v 986r  # should fail
+LOOKUP 2ql7  # should fail
+INSERT nk0k mdk7  # should fail
+LOOKUP 1hrr  # should fail
+INSERT p9jr ikzd  # should fail
+LOOKUP 5sgv  # should fail
+DISPLAY  # should always succeed
+INSERT kkld xj96  # should fail
+LOOKUP ynnb  # should fail
+UPDATE i94h pae6  # should fail
+UPDATE pxhd gu2d  # should succeed
+LOOKUP shwk  # should fail
+INSERT 64vo x3va  # should fail
+LOOKUP 35h6  # should fail
+INSERT 6l5s 4viu  # should succeed
+UPDATE fi4c hkt3  # should succeed
+INSERT 4dyk aggg  # should succeed
+INSERT bca5 97a0  # should fail
+INSERT bqov mp52  # should succeed
+LOOKUP hz8j  # should succeed and return rpd5
+INSERT i2wd a4h4  # should succeed
+INSERT bkzk jstp  # should succeed
+LOOKUP k4n9  # should succeed and return s344
+INSERT 1wzb th61  # should succeed
+UPDATE u57n gks3  # should fail
+LOOKUP ysyp  # should fail
+INSERT i5y9 38nr  # should succeed
+UPDATE 6167 pcwi  # should fail
+UPDATE 8t1o fn6k  # should fail
+LOOKUP c97e  # should fail
+INSERT 1n10 h28v  # should succeed
+INSERT fzjt mlky  # should fail
+LOOKUP 5k2e  # should fail
+DEINIT

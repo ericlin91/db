@@ -396,40 +396,52 @@ ERROR_T BTreeIndex::Insert(const KEY_T &key, const VALUE_T &value)
     if(root.info.numkeys<root.info.GetNumSlotsAsInterior()){
       //get where to insert key
       int insertAt; //save offset where key is inserted so you know where to put value
+      int found = 0;
       for (offset=0;offset<root.info.numkeys;offset++) { 
         rc=root.GetKey(offset,keyhold);
         if (rc) {  return rc; }
         if (newkey<keyhold) {
           insertAt=offset;
+          found=1;
           break;
         }
+      }
+      if(found==0){
+        insertAt = root.info.numkeys;
       }
 
       //END CASE
 
+
+
       //slide everything over
       int i;
       SIZE_T ptrhold;
-      for(i=root.info.numkeys-1; i>=insertAt; i--){
-        rc=root.GetKey(i,keyhold);
+      root.info.numkeys++;
+      for(i=root.info.numkeys; i>insertAt+1; i--){
+        rc=root.GetKey(i-2,keyhold);
         if (rc) {  return rc; }
-        rc=root.SetKey(i+1,keyhold);
+        rc=root.SetKey(i-1,keyhold);
         if (rc) {  return rc; }
         
-        rc=root.GetPtr(i,ptrhold);
+        rc=root.GetPtr(i-2,ptrhold);
         if (rc) {  return rc; }
-        rc=root.SetPtr(i+1,ptrhold);
+        rc=root.SetPtr(i-1,ptrhold);
         if (rc) {  return rc; }
       }
+
+
+
+
 
       //insert the new stuff
       rc=root.SetKey(insertAt,newkey);
       if (rc) {  return rc; }
-      rc=root.SetPtr(insertAt,newnode);
+      rc=root.SetPtr(insertAt+1,newnode);
       if (rc) {  return rc; }
 
       //increment number of keys
-      root.info.numkeys++;
+      //root.info.numkeys++;
       newnode=0;
 
       return root.Serialize(buffercache, superblock.info.rootnode);
@@ -722,8 +734,8 @@ ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, const KEY_T &key, const VALUE_T
     // numkeys_old = (n+3)/2; //(n+3) instead of (n/2) to account for rounding cuz we want ceiling
     // numkeys_new = n+1-numkeys_old; //total after insertion minus the keys in oldnode
 
-    old.info.numkeys = (n+2)/2; //(n+3) instead of (n/2) to account for rounding cuz we want ceiling
-    nnode.info.numkeys = n+1-old.info.numkeys; //total after insertion minus the keys in oldnode
+    // old.info.numkeys = (n+2)/2; //(n+3) instead of (n/2) to account for rounding cuz we want ceiling
+    // nnode.info.numkeys = n+1-old.info.numkeys; //total after insertion minus the keys in oldnode
 
     //fill a sorted array with all the keys, including new keys
     counter=0;
@@ -747,6 +759,9 @@ ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, const KEY_T &key, const VALUE_T
       keyarr[old.info.numkeys] = key;
       valarr[old.info.numkeys] = value;
     }
+
+    old.info.numkeys = (n+2)/2; //(n+3) instead of (n/2) to account for rounding cuz we want ceiling
+    nnode.info.numkeys = n+1-old.info.numkeys; //total after insertion minus the keys in oldnode
 
     unsigned int i; //our for loop increment
 
