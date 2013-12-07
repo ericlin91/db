@@ -1,0 +1,101 @@
+INIT 16 16
+UPDATE u2thyww9j2t5stl4 6h2lq1kz6astqae6  # should fail
+INSERT 3hmhelehvawp470v 6dqjps7k5wxacj0i  # should succeed
+DISPLAY  # should always succeed
+UPDATE 7e2btq0rtdguexbo hl4p3qhdci9ee7ay  # should fail
+UPDATE 3hmhelehvawp470v iqv92fqrvb6229jt  # should succeed
+UPDATE wxu92x8m6c80llb6 xb6sttefvokegv27  # should fail
+DISPLAY  # should always succeed
+DISPLAY  # should always succeed
+LOOKUP 3xtarfln59hn4xe7  # should fail
+INSERT m9sgl6wsu0nvdwjh ym9pmk57ellmm13l  # should succeed
+INSERT m9sgl6wsu0nvdwjh 561mj50drn0k2hy7  # should fail
+DISPLAY  # should always succeed
+UPDATE m9sgl6wsu0nvdwjh vt1vwy6jmmjuysf9  # should succeed
+DISPLAY  # should always succeed
+INSERT 3hmhelehvawp470v zd90uqcym4opmji8  # should fail
+LOOKUP 3hmhelehvawp470v  # should succeed and return iqv92fqrvb6229jt
+UPDATE 62nc032tjtpm25v7 od8u0wfy3lno9egu  # should fail
+INSERT hzukd1krcus2s0y7 sx5ykd5olx0wwe8e  # should succeed
+LOOKUP hzukd1krcus2s0y7  # should succeed and return sx5ykd5olx0wwe8e
+INSERT hzukd1krcus2s0y7 tr7h96ew7iyj52wq  # should fail
+DISPLAY  # should always succeed
+UPDATE 3hmhelehvawp470v 3oo9j6d4sucevne6  # should succeed
+LOOKUP rx21kg19jm4l06q1  # should fail
+UPDATE m9sgl6wsu0nvdwjh ukrmlmhq3afeta3l  # should succeed
+DISPLAY  # should always succeed
+UPDATE whbv8h5dj7b41n2s a4q9u29wfpnb1goz  # should fail
+INSERT gusfqoyc6kkbtmyk grwonfzte52tbqp0  # should succeed
+UPDATE rc74mgvx53nsw3rx 65x3ht1nva2puhuf  # should fail
+INSERT m9sgl6wsu0nvdwjh 951dqeif0qq84uin  # should fail
+INSERT t2dpy968fwcj02qd hmrrsi7troty4c39  # should succeed
+UPDATE 3i2prf5mxn10c339 r11w4fzqxeusnzv8  # should fail
+UPDATE 6tykbzvgo8bgx0dt 2ehgb3xn7c2kp975  # should fail
+LOOKUP 9tqac6f5f04k5rus  # should fail
+LOOKUP nxo952vzajnjnp1a  # should fail
+DISPLAY  # should always succeed
+LOOKUP ios1d3a4g1tx0yau  # should fail
+DISPLAY  # should always succeed
+LOOKUP hzukd1krcus2s0y7  # should succeed and return sx5ykd5olx0wwe8e
+LOOKUP 1farhmw37gnbs0ua  # should fail
+UPDATE oiqq0mn4mpxezoc9 9n3airr8lmqnu3iv  # should fail
+INSERT tu4wbedj6g4hawmv n56d8c33u6okacd1  # should succeed
+UPDATE 3hmhelehvawp470v 66filzn90h9fmrsy  # should succeed
+LOOKUP t2dpy968fwcj02qd  # should succeed and return hmrrsi7troty4c39
+INSERT dfd0v0mh23g60wi7 jdjhcoqkpz42s4cd  # should succeed
+UPDATE tu4wbedj6g4hawmv un68ne4x497vow9d  # should succeed
+LOOKUP 8cer13ku0p0524vn  # should fail
+INSERT 777etcnur8r8rh4m ip1bvbv8t3sksebs  # should succeed
+LOOKUP fcjr8xsao2k9zhcv  # should fail
+LOOKUP gusfqoyc6kkbtmyk  # should succeed and return grwonfzte52tbqp0
+DISPLAY  # should always succeed
+INSERT gusfqoyc6kkbtmyk oxqla4fsfambyg3e  # should fail
+UPDATE lj80i3c56m55l1ta rk8bbmeak82s1ex3  # should fail
+INSERT irpzfez0mkw85clp 05jf8ydcjah3m3wk  # should succeed
+DISPLAY  # should always succeed
+UPDATE wr0w23bobimjye5a yb3dz7fcyvkle5jh  # should fail
+INSERT hzukd1krcus2s0y7 rf11u6p9bj2d8ij0  # should fail
+UPDATE noy9j4fhsxzm9jhf v9cdu50ongq84p68  # should fail
+INSERT hzukd1krcus2s0y7 d3oqs0khsmduaz5a  # should fail
+UPDATE jrsljmsra8hfgoiw wwlajbkroxuu1hnp  # should fail
+UPDATE ke67v2y1f200cv7t l6eo3z2hf8fcvmuk  # should fail
+UPDATE l8gmu4seerkudeep 1r494jx70fsbem1p  # should fail
+INSERT oj9qumq0dhco9p46 swdo2dsukx1hq59o  # should succeed
+INSERT m9sgl6wsu0nvdwjh lgo4rqn7iq7ra0ks  # should fail
+UPDATE irpzfez0mkw85clp 1mafgqk1s89ja064  # should succeed
+UPDATE m9sgl6wsu0nvdwjh l3iikyyd766192pd  # should succeed
+INSERT qu0ortjuvo1prsf3 1l6i99pg36jhxhd1  # should succeed
+LOOKUP 40fpejcw0veajv4u  # should fail
+DISPLAY  # should always succeed
+LOOKUP hzukd1krcus2s0y7  # should succeed and return sx5ykd5olx0wwe8e
+INSERT 43k9y43463uapnwj 684l6eiss3r1kx9s  # should succeed
+UPDATE m9sgl6wsu0nvdwjh jgs824a72lc4wp44  # should succeed
+DISPLAY  # should always succeed
+INSERT 4mq6hqqilyzpv7nh ywi7zdd8orp8bwof  # should succeed
+LOOKUP 3pzvfpwvj51qoevo  # should fail
+INSERT hzukd1krcus2s0y7 29156jkj95vkpocn  # should fail
+DISPLAY  # should always succeed
+INSERT 32uyvmgowvcv3ziz fmnf126c5q4hctkc  # should succeed
+UPDATE ds8e449yyxwndfqg x9vhsoaice6b80yy  # should fail
+INSERT ezajmuy9s1w4gt5v nyma6a42m84bg047  # should succeed
+LOOKUP 3hmhelehvawp470v  # should succeed and return 66filzn90h9fmrsy
+DISPLAY  # should always succeed
+LOOKUP hzukd1krcus2s0y7  # should succeed and return sx5ykd5olx0wwe8e
+LOOKUP 7r93yva1mskmudhs  # should fail
+DISPLAY  # should always succeed
+INSERT 3hmhelehvawp470v g5hmu3iqcpg2w431  # should fail
+UPDATE qngiqy06legwhhho w1fzp964rn3zisko  # should fail
+DISPLAY  # should always succeed
+DISPLAY  # should always succeed
+LOOKUP m9sgl6wsu0nvdwjh  # should succeed and return jgs824a72lc4wp44
+UPDATE 4csk03uglfvwrfdw m8w51imey028byfh  # should fail
+LOOKUP 32uyvmgowvcv3ziz  # should succeed and return fmnf126c5q4hctkc
+DISPLAY  # should always succeed
+LOOKUP 9sgo8f4ds9ffx6br  # should fail
+UPDATE 43k9y43463uapnwj 08t74kl1r3mx17ak  # should succeed
+LOOKUP lnzvdfldw5ymqhi4  # should fail
+DISPLAY  # should always succeed
+INSERT qu0ortjuvo1prsf3 1j8oaxz5vmaz1i29  # should fail
+UPDATE 777etcnur8r8rh4m 1gxc7zurulx9lmls  # should succeed
+UPDATE irpzfez0mkw85clp 9s3jxoxmn7h0f1wo  # should succeed
+DEINIT

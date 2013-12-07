@@ -423,12 +423,19 @@ ERROR_T BTreeIndex::Insert(const KEY_T &key, const VALUE_T &value)
         if (rc) {  return rc; }
         rc=root.SetKey(i-1,keyhold);
         if (rc) {  return rc; }
+      }
         
+      //slide everything over
+      
+      // SIZE_T ptrhold;
+      // root.info.numkeys++;
+      for(i=root.info.numkeys+1; i>insertAt+2; i--){        
         rc=root.GetPtr(i-2,ptrhold);
         if (rc) {  return rc; }
         rc=root.SetPtr(i-1,ptrhold);
         if (rc) {  return rc; }
       }
+      
 
 
 
