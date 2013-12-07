@@ -711,6 +711,7 @@ ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, const KEY_T &key, const VALUE_T
   KEY_T keyhold;
   VALUE_T valhold;
   SIZE_T ptrhold;
+  SIZE_T newintnode;
   //SIZE_T ptr;
   int counter;
   int insertAt; //holds offset of insert
@@ -802,7 +803,7 @@ ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, const KEY_T &key, const VALUE_T
       rc=old.GetKey(offset,keyhold);
       if (rc) {  return rc; }
       if (key<keyhold && inArray==0) {
-        keyarr[counter]=key;
+        keyarr[counter]=newkey;
         inArray=1;
         insertAt=counter;
         counter++;
@@ -811,7 +812,7 @@ ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, const KEY_T &key, const VALUE_T
       counter++;
     }
     if(inArray==0){
-      keyarr[old.info.numkeys] = key;
+      keyarr[old.info.numkeys] = newkey;
     }
 
 
@@ -869,7 +870,10 @@ ERROR_T BTreeIndex::Split(SIZE_T &node_to_split, const KEY_T &key, const VALUE_T
   //write changes to disk
   old.Serialize(buffercache, node_to_split);
   if (rc!=ERROR_NOERROR) { return rc;}
-  return nnode.Serialize(buffercache, newnode);
+  AllocateNode(newintnode);
+  rc=nnode.Serialize(buffercache, newintnode);
+  newnode=newintnode;
+  return rc;
 }
  
 ERROR_T BTreeIndex::Update(const KEY_T &key, const VALUE_T &value)
